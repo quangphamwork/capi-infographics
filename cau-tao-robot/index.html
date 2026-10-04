@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Infographic tương tác: Robot được cấu tạo như thế nào? – AYOR 2026, STEAM for Vietnam">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robot được cấu tạo như thế nào? (tương tác)</title>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #71377F; --pb: #A14AAE; --violet: #8244A4; --indigo: #351C75; --navy: #202E66;
+    --pink: #CB6CE6; --ink: #2A1650; --muted: #5B4A78; --lilac: #F3EAFB; --lilac2: #E8D8F6;
+    --sense: #1EA8E0; --think: #A14AAE; --act: #F08A24; --cut: 28px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Quicksand", sans-serif; color: var(--ink); min-height: 100vh;
+    background: linear-gradient(170deg, #7A3A8E 0%, #4A2A7A 25%, #2E2A6A 60%, #202E66 100%) fixed; }
+  .page { max-width: 1080px; margin: 0 auto; padding: 56px 56px 0; }
+  .cut { clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut))); }
+  b { color: var(--ink); font-weight: 700; }
+  button { font: inherit; cursor: pointer; border: 0; }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .stagger > * { opacity: 0; transform: translateY(24px); transition: opacity .5s ease, transform .5s ease; }
+  .in .stagger > *, .stagger.in > * { opacity: 1; transform: none; }
+  .stagger > *:nth-child(2) { transition-delay: .08s } .stagger > *:nth-child(3) { transition-delay: .16s }
+  .stagger > *:nth-child(4) { transition-delay: .24s } .stagger > *:nth-child(5) { transition-delay: .32s }
+  .stagger > *:nth-child(6) { transition-delay: .40s } .stagger > *:nth-child(7) { transition-delay: .48s }
+  .stagger > *:nth-child(8) { transition-delay: .56s }
+
+  @keyframes bob { 0%,100% { transform: translateY(0) rotate(-2deg) } 50% { transform: translateY(-14px) rotate(2deg) } }
+  @keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+  .bob { animation: bob 3.2s ease-in-out infinite; }
+  .floaty { animation: floaty 2.6s ease-in-out infinite; }
+
+  /* header */
+  .logos { display: flex; align-items: center; gap: 22px; }
+  .logos .ayor { height: 78px; } .logos .steam { height: 54px; }
+  .hero { position: relative; margin-top: 36px; min-height: 360px; }
+  .eyebrow { display: inline-block; font-family: "Audiowide", sans-serif; font-size: 22px; letter-spacing: 3px; color: #fff; background: var(--pb); padding: 8px 22px; --cut: 12px; }
+  h1 { font-family: "Montserrat", sans-serif; font-weight: 900; color: #fff; font-size: 64px; line-height: 1.06; margin-top: 22px; max-width: 720px; letter-spacing: -1px; }
+  h1 span { color: var(--pink); }
+  .lede { color: #E9DDF7; font-size: 28px; font-weight: 600; margin-top: 20px; max-width: 600px; line-height: 1.38; }
+  .hero .capi { position: absolute; right: -10px; top: 10px; width: 290px; filter: drop-shadow(0 18px 24px rgba(10,5,40,.45)); }
+  .hint { display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; color: #fff; font-weight: 700; font-size: 18px; background: rgba(255,255,255,.14); padding: 8px 16px; border-radius: 999px; }
+  .hint i { font-style: normal; animation: floaty 1.4s ease-in-out infinite; display: inline-block; }
+
+  /* cards */
+  .card { position: relative; background: #fff; padding: 40px 40px 44px; margin-top: 36px; --cut: 34px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; padding-right: 170px; }
+  .card.has-capi .intro { padding-right: 150px; }
+  .num { flex: none; width: 70px; height: 70px; --cut: 15px; background: var(--purple); color: #fff; display: grid; place-items: center; font-family: "Audiowide", sans-serif; font-size: 30px; }
+  .sec-head small { display: block; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 17px; letter-spacing: 1.6px; color: var(--pb); text-transform: uppercase; }
+  h2 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 38px; line-height: 1.12; color: var(--indigo); }
+  .intro { font-size: 23px; line-height: 1.45; font-weight: 600; color: var(--muted); margin-top: 18px; }
+  .card .capi { position: absolute; filter: drop-shadow(0 10px 14px rgba(40,20,90,.22)); }
+  .tip { display: inline-block; margin-top: 10px; font-size: 16px; font-weight: 700; color: var(--pb); background: var(--lilac); padding: 4px 12px; border-radius: 999px; }
+
+  /* intro strip */
+  .robots { display: grid; grid-template-columns: 0.75fr 1.2fr 1.1fr; gap: 18px; margin-top: 24px; align-items: end; }
+  .robots figure { text-align: center; transition: transform .3s; }
+  .robots figure:hover { transform: translateY(-8px) scale(1.04); }
+  .robots img { width: 100%; height: 190px; object-fit: contain; }
+  .robots figcaption { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 18px; color: var(--indigo); margin-top: 8px; text-transform: uppercase; letter-spacing: .4px; }
+  .loop-pill { margin-top: 26px; display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+    font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 24px; color: #fff; }
+  .loop-pill span { padding: 10px 22px; --cut: 12px; opacity: .45; transform: scale(.94); transition: opacity .35s, transform .35s; }
+  .loop-pill span.on { opacity: 1; transform: scale(1.08); }
+  .loop-pill i { font-style: normal; color: var(--pb); font-size: 30px; }
+
+  /* comparison */
+  .cmp-head { display: grid; grid-template-columns: 1fr 64px 1fr; margin-top: 28px; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 19px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .cmp-head div:first-child { color: #D2589B; } .cmp-head div:last-child { color: var(--violet); text-align: right; }
+  .row { display: grid; grid-template-columns: 1fr 64px 1fr; align-items: center; margin-top: 14px; cursor: pointer; }
+  .side { display: flex; align-items: center; gap: 16px; padding: 14px 16px; min-height: 120px; --cut: 16px; transition: transform .3s, background .3s, box-shadow .3s; }
+  .human { background: #FDEEF5; }
+  .robot { background: var(--lilac); flex-direction: row-reverse; text-align: right; }
+  .row:hover .human, .row.active .human { background: #FAD5E6; transform: translateX(-6px); }
+  .row:hover .robot, .row.active .robot { background: #E2CCF5; transform: translateX(6px); }
+  .ic { flex: none; width: 92px; height: 92px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-size: 50px; overflow: hidden; transition: transform .4s; }
+  .row:hover .ic, .row.active .ic { transform: scale(1.12) rotate(-6deg); }
+  .robot .ic { border-radius: 14px; }
+  .ic img { width: 84%; height: 84%; object-fit: contain; }
+  .side h3 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 23px; color: var(--indigo); line-height: 1.15; }
+  .side p { font-size: 18px; line-height: 1.38; font-weight: 600; color: var(--muted); margin-top: 4px; }
+  .link { text-align: center; font-size: 30px; color: var(--pb); font-weight: 700; transition: transform .3s; }
+  .row:hover .link, .row.active .link { transform: scale(1.5); animation: none; }
+  @keyframes pulseLink { 0%,100% { transform: scale(1) } 50% { transform: scale(1.25) } }
+  .in .link { animation: pulseLink 1.8s ease-in-out infinite; }
+  .fact { grid-column: 1 / -1; max-height: 0; overflow: hidden; transition: max-height .4s ease, margin .4s; }
+  .row.active .fact { max-height: 120px; margin-top: 10px; }
+  .fact p { background: #FFF6E5; border: 2px dashed #F0A43C; color: #8A4B00; font-size: 18px; font-weight: 600; padding: 10px 16px; border-radius: 12px; line-height: 1.4; }
+
+  .senses { margin-top: 30px; background: linear-gradient(135deg, #F7EFFC, #EEE4FA); padding: 26px 24px 28px; --cut: 22px; }
+  .senses h4 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 24px; color: var(--indigo); text-align: center; }
+  .sense-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 20px; }
+  .sense { text-align: center; cursor: pointer; padding: 8px 0 10px; border-radius: 18px; transition: background .3s; }
+  .sense .h { width: 86px; height: 86px; margin: 0 auto; display: block; transition: transform .4s; }
+  .sense .arrow { color: var(--pb); font-size: 26px; line-height: 1; margin: 4px 0; transition: transform .4s; }
+  .sense .s { width: 120px; height: 92px; margin: 0 auto; background: #fff; border-radius: 14px; display: grid; place-items: center; transition: box-shadow .4s, transform .4s; }
+  .sense .s img { max-width: 86%; max-height: 84%; object-fit: contain; }
+  .sense .t1 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 18px; color: #D2589B; margin-top: 8px; }
+  .sense .t2 { font-size: 16px; font-weight: 700; color: var(--violet); line-height: 1.3; margin-top: 2px; }
+  .sense.on, .sense:hover { background: rgba(255,255,255,.7); }
+  .sense.on .h, .sense:hover .h { transform: scale(1.12) translateY(-4px); }
+  .sense.on .arrow, .sense:hover .arrow { transform: translateY(6px); }
+  .sense.on .s, .sense:hover .s { box-shadow: 0 0 0 4px var(--pb), 0 10px 22px rgba(161,74,174,.35); transform: scale(1.06); }
+
+  /* flow */
+  .flow { position: relative; display: grid; grid-template-columns: 1fr 70px 1fr 70px 1fr; align-items: start; margin-top: 30px; }
+  .node { text-align: center; }
+  .node .box { height: 170px; background: #fff; border: 4px solid; display: grid; place-items: center; --cut: 18px; position: relative; overflow: hidden; }
+  .node .box img { max-width: 80%; max-height: 120px; object-fit: contain; position: relative; z-index: 1; }
+  .node .tag { display: inline-block; margin-top: 14px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 22px; color: #fff; padding: 8px 16px; --cut: 10px; letter-spacing: .5px; }
+  .node .part { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 18px; color: var(--indigo); margin-top: 10px; }
+  .node .what { font-size: 17px; line-height: 1.35; font-weight: 600; color: var(--muted); margin-top: 4px; padding: 0 4px; }
+  .n1 .box { border-color: var(--sense); } .n1 .tag { background: var(--sense); }
+  .n2 .box { border-color: var(--think); } .n2 .tag { background: var(--think); }
+  .n3 .box { border-color: var(--act); } .n3 .tag { background: var(--act); }
+  .arr { padding-top: 58px; text-align: center; position: relative; }
+  .arr svg { width: 70px; height: 40px; }
+  .arr span { display: block; font-size: 14px; font-weight: 700; color: var(--muted); line-height: 1.2; margin-top: 2px; }
+  .packet { position: absolute; top: 70px; left: 2px; width: 16px; height: 16px; border-radius: 50%; opacity: 0; }
+  .p1 { background: var(--sense); box-shadow: 0 0 10px var(--sense); animation: p1 4s linear infinite; }
+  .p2 { background: var(--think); box-shadow: 0 0 10px var(--think); animation: p2 4s linear infinite; }
+  @keyframes p1 { 0%,10% { opacity: 0; transform: translateX(0) } 12% { opacity: 1 } 28% { opacity: 1; transform: translateX(46px) } 30%,100% { opacity: 0; transform: translateX(46px) } }
+  @keyframes p2 { 0%,45% { opacity: 0; transform: translateX(0) } 47% { opacity: 1 } 63% { opacity: 1; transform: translateX(46px) } 65%,100% { opacity: 0; transform: translateX(46px) } }
+  .n1 .box { animation: g1 4s infinite; } .n2 .box { animation: g2 4s infinite; } .n3 .box { animation: g3 4s infinite; }
+  @keyframes g1 { 0%,12% { box-shadow: inset 0 0 0 0 transparent, 0 0 26px rgba(30,168,224,.7) } 18%,92% { box-shadow: none } 96%,100% { box-shadow: 0 0 26px rgba(30,168,224,.7) } }
+  @keyframes g2 { 0%,28% { box-shadow: none } 31%,45% { box-shadow: 0 0 26px rgba(161,74,174,.75) } 50%,100% { box-shadow: none } }
+  @keyframes g3 { 0%,63% { box-shadow: none } 66%,82% { box-shadow: 0 0 26px rgba(240,138,36,.8) } 86%,100% { box-shadow: none } }
+  .n2 .think { position: absolute; top: 10px; right: 12px; font-family: "Audiowide"; font-size: 22px; color: var(--think); opacity: 0; animation: think 4s infinite; z-index: 2; }
+  @keyframes think { 0%,30% { opacity: 0 } 34%,44% { opacity: 1 } 48%,100% { opacity: 0 } }
+  .n3 img { animation: buzz 4s infinite; }
+  @keyframes buzz { 0%,65% { transform: none } 67% { transform: rotate(-8deg) } 69% { transform: rotate(8deg) } 71% { transform: rotate(-8deg) } 73% { transform: rotate(8deg) } 75% { transform: rotate(-6deg) } 77% { transform: rotate(6deg) } 80%,100% { transform: none } }
+  .sonar { position: absolute; left: 50%; top: 50%; width: 60px; height: 60px; margin: -30px 0 0 -30px; border-radius: 50%; border: 3px solid rgba(30,168,224,.6); animation: sonar 2s ease-out infinite; }
+  .sonar.d2 { animation-delay: .7s; } .sonar.d3 { animation-delay: 1.4s; }
+  @keyframes sonar { from { transform: scale(.6); opacity: .9 } to { transform: scale(4); opacity: 0 } }
+  .feedback { margin-top: 10px; }
+  .feedback svg { width: 100%; height: 70px; display: block; }
+  .feedback .dash { animation: dash 1.2s linear infinite; }
+  @keyframes dash { to { stroke-dashoffset: -42; } }
+  .feedback p { text-align: center; font-size: 19px; font-weight: 700; color: var(--sense); margin-top: -6px; }
+  .power { margin-top: 22px; display: flex; align-items: center; gap: 16px; background: #E4F7F4; padding: 14px 20px; --cut: 14px; }
+  .power .bat { font-size: 40px; animation: floaty 2s ease-in-out infinite; }
+  .power p { font-size: 20px; font-weight: 600; color: #0D6E66; line-height: 1.35; }
+  .power b { color: #0A5A53; }
+  .human-row, .daily { margin-top: 18px; padding: 18px 22px; --cut: 16px; }
+  .human-row { background: #FDEEF5; margin-top: 26px; } .daily { background: var(--lilac); }
+  .human-row h5, .daily h5 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 19px; letter-spacing: 1px; text-transform: uppercase; }
+  .human-row h5 { color: #D2589B; } .daily h5 { color: var(--violet); }
+  .chain { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; font-size: 20px; font-weight: 700; color: var(--ink); }
+  .chain span { background: #fff; padding: 8px 14px; --cut: 9px; transition: background .3s, transform .3s; }
+  .chain span.on { background: #FFE7A8; transform: translateY(-3px); }
+  .chain i { font-style: normal; color: #D2589B; font-weight: 800; }
+  .daily .chain i { color: var(--violet); }
+
+  /* simulator */
+  .scenario { display: flex; gap: 24px; align-items: center; margin-top: 22px; background: var(--lilac); padding: 18px 22px; --cut: 18px; }
+  .scenario img { width: 200px; flex: none; mix-blend-mode: multiply; }
+  .scenario p { font-size: 22px; line-height: 1.42; font-weight: 600; color: var(--muted); }
+  .sim { margin-top: 24px; background: #0F1440; padding: 18px; --cut: 22px; }
+  .sim svg { width: 100%; display: block; border-radius: 10px; }
+  .hud { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 14px; }
+  .hud div { background: rgba(255,255,255,.08); border-radius: 12px; padding: 10px 14px; color: #CFC8FF; font-size: 15px; font-weight: 700; letter-spacing: .5px; }
+  .hud b { display: block; color: #fff; font-family: "JetBrains Mono", monospace; font-size: 26px; margin-top: 2px; }
+  .hud .dec b { font-size: 20px; }
+  .ctrl { display: flex; align-items: center; gap: 14px; margin-top: 14px; flex-wrap: wrap; }
+  .ctrl button { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 18px; padding: 10px 20px; --cut: 10px; color: #fff; background: var(--pb); transition: transform .2s, filter .2s; }
+  .ctrl button:hover { transform: translateY(-2px); filter: brightness(1.1); }
+  .ctrl button.ghost { background: rgba(255,255,255,.15); }
+  .ctrl label { color: #E7E3FF; font-weight: 700; font-size: 17px; display: flex; align-items: center; gap: 10px; margin-left: auto; }
+  .ctrl input[type=range] { width: 180px; accent-color: #CB6CE6; }
+  .ctrl output { font-family: "JetBrains Mono", monospace; color: #FFD479; min-width: 64px; }
+
+  .steps { margin-top: 26px; position: relative; }
+  .steps::before { content: ""; position: absolute; left: 33px; top: 30px; bottom: 30px; width: 4px; background: linear-gradient(var(--sense), var(--think), var(--act), var(--pb)); border-radius: 2px; }
+  .step { position: relative; display: grid; grid-template-columns: 70px 1fr 200px; gap: 18px; align-items: center; margin-top: 16px; padding: 6px 8px 6px 0; border-radius: 16px; transition: background .3s, transform .3s; }
+  .step.on { background: #FFF6E5; transform: translateX(6px); }
+  .step .b { width: 70px; height: 70px; --cut: 14px; display: grid; place-items: center; font-family: "Audiowide", sans-serif; font-size: 30px; color: #fff; z-index: 1; transition: transform .3s; }
+  .step.on .b { transform: scale(1.12); }
+  .step h3 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 23px; color: var(--indigo); }
+  .step h3 em { font-style: normal; font-size: 16px; letter-spacing: 1.2px; padding: 3px 10px; color: #fff; margin-right: 8px; vertical-align: 3px; }
+  .step p { font-size: 19px; line-height: 1.4; font-weight: 600; color: var(--muted); margin-top: 4px; }
+  .step .pic { height: 120px; background: #fff; border: 2px solid var(--lilac2); border-radius: 14px; display: grid; place-items: center; }
+  .step .pic img { max-width: 90%; max-height: 104px; object-fit: contain; }
+  .formula { margin-top: 8px; display: inline-block; background: #FFF6E5; border: 2px dashed #F0A43C; padding: 8px 14px; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 17px; color: #8A4B00; border-radius: 10px; }
+  .code { margin-top: 30px; background: #1E1B4B; color: #E7E3FF; padding: 24px 28px; --cut: 20px; font-family: "JetBrains Mono", monospace; font-size: 19px; line-height: 1.65; }
+  .code .ttl { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 17px; letter-spacing: 1.5px; color: #B9A8FF; margin-bottom: 8px; }
+  .code .ln { display: block; padding: 0 10px; margin: 0 -10px; border-radius: 6px; transition: background .25s; white-space: pre; }
+  .code .ln.on { background: rgba(255,212,121,.22); box-shadow: inset 4px 0 0 #FFD479; }
+  .code .k { color: #FF9BD2; } .code .f { color: #8BE9FD; } .code .n { color: #FFD479; }
+  .code .c1 { color: #5CC8F0; } .code .c2 { color: #D79BE8; } .code .c3 { color: #FFB46B; }
+  .legend { display: flex; gap: 18px; margin-top: 14px; flex-wrap: wrap; font-size: 18px; font-weight: 700; }
+  .legend span::before { content: ""; display: inline-block; width: 14px; height: 14px; border-radius: 3px; margin-right: 8px; vertical-align: -1px; background: currentColor; }
+
+  /* quiz */
+  .quiz { display: grid; grid-template-columns: 1.35fr 1fr; gap: 26px; margin-top: 22px; align-items: center; }
+  .quiz .photo { position: relative; background: #F7F9FC; border: 3px solid var(--lilac2); --cut: 20px; }
+  .quiz .photo img { display: block; width: 100%; }
+  .mk { position: absolute; width: 46px; height: 46px; border-radius: 50%; background: var(--pb); color: #fff; font-family: "Audiowide", sans-serif; font-size: 22px; display: grid; place-items: center; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(40,20,90,.3); transform: translate(-50%, -50%); transition: transform .25s, background .25s; }
+  .mk::after { content: ""; position: absolute; inset: -10px; border-radius: 50%; border: 3px solid rgba(161,74,174,.6); animation: sonar 1.8s ease-out infinite; pointer-events: none; }
+  .mk:hover { transform: translate(-50%, -50%) scale(1.15); }
+  .mk.done { background: #12A99B; } .mk.done::after { display: none; }
+  .mk .bub { position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) scale(.6); opacity: 0; pointer-events: none; white-space: nowrap; background: #fff; color: var(--indigo); font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 15px; padding: 6px 10px; border-radius: 10px; box-shadow: 0 6px 16px rgba(40,20,90,.25); transition: all .25s; }
+  .mk.done .bub { opacity: 1; transform: translateX(-50%) scale(1); }
+  .blanks { list-style: none; }
+  .blanks li { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 600; color: var(--muted); margin-top: 12px; cursor: pointer; }
+  .blanks li i { flex: none; width: 38px; height: 38px; border-radius: 50%; background: var(--pb); color: #fff; font-style: normal; font-family: "Audiowide", sans-serif; font-size: 18px; display: grid; place-items: center; transition: background .25s; }
+  .blanks li span { flex: 1; border-bottom: 2px dashed #C9B6E4; min-height: 30px; color: var(--indigo); font-weight: 700; }
+  .blanks li.done i { background: #12A99B; }
+  .blanks li span em { font-style: normal; color: #12A99B; font-size: 16px; margin-left: 6px; }
+  .qbtn { margin-top: 18px; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 17px; padding: 10px 18px; --cut: 10px; color: #fff; background: var(--pb); }
+
+  footer { margin-top: 44px; padding: 28px 0 40px; border-top: 2px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: space-between; }
+  footer .l { display: flex; align-items: center; gap: 18px; }
+  footer .ayor { height: 62px; } footer .steam { height: 44px; }
+  footer .tag { font-family: "Audiowide", sans-serif; color: #fff; font-size: 20px; letter-spacing: 2px; border: 2px solid rgba(255,255,255,.8); padding: 8px 18px; --cut: 10px; }
+
+  @media (max-width: 900px) {
+    .page { padding: 32px 16px 0; } h1 { font-size: 40px; } .hero .capi { width: 160px; top: 120px; } .hero { min-height: 420px; }
+    .card { padding: 26px 18px 30px; } .sec-head { padding-right: 0; } .card.has-capi .intro { padding-right: 0; } .card .capi { display: none; }
+    .row, .cmp-head { grid-template-columns: 1fr 34px 1fr; } .side { flex-direction: column; text-align: center; min-height: 0; } .robot { flex-direction: column; text-align: center; }
+    .ic { width: 64px; height: 64px; font-size: 34px; } .side h3 { font-size: 18px; } .side p { font-size: 15px; }
+    .sense-grid { grid-template-columns: repeat(3, 1fr); } .flow { grid-template-columns: 1fr; } .arr { padding: 6px 0; transform: rotate(90deg); } .packet { display: none; } .feedback { display: none; }
+    .step { grid-template-columns: 56px 1fr; } .step .pic { display: none; } .quiz { grid-template-columns: 1fr; } .hud { grid-template-columns: 1fr; } .ctrl label { margin-left: 0; }
+    .robots { grid-template-columns: 1fr 1fr 1fr; } .robots img { height: 110px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="logos">
+    <img class="ayor" src="assets/logo_ayor2026_badge_white_outline.png" alt="AYOR 2026">
+    <img class="steam" src="assets/logo_steam_for_vietnam_white.png" alt="STEAM for Vietnam">
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow cut">KIẾN TRÚC ROBOT</div>
+    <h1>Robot được <span>cấu tạo</span><br>như thế nào?</h1>
+    <p class="lede">Robot cũng có “giác quan”, “bộ não” và “cơ bắp”, giống hệt chúng ta!</p>
+    <div class="hint"><i>👆</i> Rê chuột, bấm vào các ô và chạy thử robot ở phần 3</div>
+    <img class="capi bob" src="assets/capi_question_thinking.png" alt="">
+  </section>
+
+  <!-- INTRO -->
+  <div class="card cut reveal">
+    <h2>Mỗi robot một hình dạng…</h2>
+    <div class="robots stagger">
+      <figure><img src="media/robot_asimo.png" alt=""><figcaption>Robot ASIMO</figcaption></figure>
+      <figure><img src="media/robot_nextgen.jpg" alt=""><figcaption>Robot gắp đồ vật</figcaption></figure>
+      <figure><img src="media/robot_do_line.png" alt=""><figcaption>Robot dò line</figcaption></figure>
+    </div>
+    <p class="intro" style="text-align:center">…nhưng <b>robot nào cũng hoạt động theo cùng một vòng lặp</b>, giống cách con người sống mỗi ngày:</p>
+    <div class="loop-pill" id="loopPill">
+      <span class="cut on" style="background:var(--sense)">CẢM NHẬN</span><i>→</i>
+      <span class="cut" style="background:var(--think)">SUY NGHĨ</span><i>→</i>
+      <span class="cut" style="background:var(--act)">HÀNH ĐỘNG</span><i>↺</i>
+    </div>
+  </div>
+
+  <!-- 01 COMPARISON -->
+  <div class="card cut reveal">
+    <div class="sec-head"><div class="num cut">01</div><div><small>Phần 1</small><h2>Robot giống cơ thể người ở đâu?</h2></div></div>
+    <p class="intro">Mỗi bộ phận của robot đều có một “người anh em” trong cơ thể chúng ta.</p>
+    <span class="tip">👆 Bấm vào từng hàng để xem điều thú vị</span>
+    <div class="cmp-head"><div>Cơ thể người</div><div></div><div>Robot</div></div>
+
+    <div class="stagger" id="cmp">
+      <div class="row">
+        <div class="side human cut"><div class="ic"><img src="media/giac_quan_mat.png" alt=""></div><div><h3>Giác quan</h3><p>Nhìn, nghe, ngửi, nếm, chạm để biết xung quanh có gì</p></div></div>
+        <div class="link">⇄</div>
+        <div class="side robot cut"><div class="ic"><img src="media/cam_bien_sieu_am_hcsr04.png" alt=""></div><div><h3>Cảm biến (Sensor)</h3><p>Đo khoảng cách, âm thanh, nhiệt độ… rồi đổi thành tín hiệu điện</p></div></div>
+        <div class="fact"><p>💡 Cảm biến siêu âm “nhìn” giống con dơi: phát tiếng kêu rồi nghe tiếng vọng để biết vật ở xa hay gần.</p></div>
+      </div>
+      <div class="row">
+        <div class="side human cut"><div class="ic"><img src="media/nao_nguoi.png" alt=""></div><div><h3>Bộ não</h3><p>Suy nghĩ, ghi nhớ và ra quyết định</p></div></div>
+        <div class="link">⇄</div>
+        <div class="side robot cut"><div class="ic"><img src="media/bo_dieu_khien_nextgen.png" alt=""></div><div><h3>Bộ điều khiển</h3><p>Vi điều khiển chạy chương trình (code), tính toán và ra lệnh</p></div></div>
+        <div class="fact"><p>💡 Bộ não robot chỉ làm đúng những gì chương trình viết. Robot “thông minh” là nhờ người lập trình giỏi!</p></div>
+      </div>
+      <div class="row">
+        <div class="side human cut"><div class="ic"><svg viewBox="0 0 64 64" width="60" height="60"><path d="M6 32 C 16 12, 24 52, 32 32 S 48 12, 58 32" fill="none" stroke="#D2589B" stroke-width="5" stroke-linecap="round"/><circle cx="6" cy="32" r="5" fill="#D2589B"/><circle cx="58" cy="32" r="5" fill="#D2589B"/></svg></div><div><h3>Dây thần kinh</h3><p>Chuyển “tin nhắn” giữa não và cơ thể</p></div></div>
+        <div class="link">⇄</div>
+        <div class="side robot cut"><div class="ic"><svg viewBox="0 0 64 64" width="62" height="62"><path d="M4 22 H 30 Q 40 22 40 32 T 60 42" fill="none" stroke="#E8175D" stroke-width="5" stroke-linecap="round"/><path d="M4 32 H 30 Q 38 32 42 38 T 60 50" fill="none" stroke="#2A2A2A" stroke-width="5" stroke-linecap="round"/><path d="M4 42 H 26 Q 36 42 44 30 T 60 18" fill="none" stroke="#F9B000" stroke-width="5" stroke-linecap="round"/></svg></div><div><h3>Dây dẫn &amp; tín hiệu điện</h3><p>Đưa dữ liệu từ cảm biến về và đưa lệnh tới động cơ</p></div></div>
+        <div class="fact"><p>💡 Tín hiệu thần kinh và tín hiệu điện trong dây dẫn đều là những “xung” rất nhanh, truyền đi trong tích tắc.</p></div>
+      </div>
+      <div class="row">
+        <div class="side human cut"><div class="ic">💪</div><div><h3>Cơ bắp</h3><p>Co, duỗi để cử động tay chân</p></div></div>
+        <div class="link">⇄</div>
+        <div class="side robot cut"><div class="ic"><img src="media/dong_co_dc.png" alt=""></div><div><h3>Cơ cấu chấp hành</h3><p>Động cơ, servo (Actuator) biến điện năng thành chuyển động</p></div></div>
+        <div class="fact"><p>💡 Servo là động cơ đặc biệt: quay tới đúng một góc mình muốn, rất hợp làm khớp tay robot.</p></div>
+      </div>
+      <div class="row">
+        <div class="side human cut"><div class="ic">🦴</div><div><h3>Bộ xương, tay chân</h3><p>Nâng đỡ và giữ dáng cho cơ thể</p></div></div>
+        <div class="link">⇄</div>
+        <div class="side robot cut"><div class="ic"><img src="media/robot_nextgen.jpg" alt="" style="mix-blend-mode:multiply"></div><div><h3>Khung &amp; cơ khí</h3><p>Khung nhôm, bánh xe, tay gắp</p></div></div>
+        <div class="fact"><p>💡 Khung robot cần vừa cứng vừa nhẹ, nên thường làm bằng nhôm hoặc nhựa.</p></div>
+      </div>
+      <div class="row">
+        <div class="side human cut"><div class="ic">🍎</div><div><h3>Năng lượng từ thức ăn</h3><p>Giúp cơ thể có sức hoạt động</p></div></div>
+        <div class="link">⇄</div>
+        <div class="side robot cut"><div class="ic">🔋</div><div><h3>Nguồn điện (pin)</h3><p>Cấp điện cho mọi bộ phận của robot</p></div></div>
+        <div class="fact"><p>💡 Động cơ là bộ phận “ăn” nhiều điện nhất. Pin yếu thì robot chạy chậm hẳn đi!</p></div>
+      </div>
+    </div>
+
+    <div class="senses cut">
+      <h4>5 giác quan của người ⇄ các loại cảm biến của robot</h4>
+      <div class="sense-grid" id="senses">
+        <div class="sense on"><img class="h" src="media/giac_quan_mat.png" alt=""><div class="arrow">↓</div><div class="s"><img src="media/cam_bien_sieu_am_hcsr04.png" alt=""></div><div class="t1">Thị giác</div><div class="t2">Camera, cảm biến siêu âm</div></div>
+        <div class="sense"><img class="h" src="media/giac_quan_tai.png" alt=""><div class="arrow">↓</div><div class="s"><img src="media/cam_bien_am_thanh.png" alt=""></div><div class="t1">Thính giác</div><div class="t2">Cảm biến âm thanh (micro)</div></div>
+        <div class="sense"><img class="h" src="media/giac_quan_da_tay.png" alt=""><div class="arrow">↓</div><div class="s"><img src="media/cam_bien_ap_luc_loadcell.png" alt=""></div><div class="t1">Xúc giác</div><div class="t2">Cảm biến áp lực (loadcell)</div></div>
+        <div class="sense"><img class="h" src="media/giac_quan_mui.png" alt=""><div class="arrow">↓</div><div class="s"><img src="media/cam_bien_khi_mq2.png" alt=""></div><div class="t1">Khứu giác</div><div class="t2">Cảm biến khí gas (MQ-2)</div></div>
+        <div class="sense"><img class="h" src="media/giac_quan_luoi.png" alt=""><div class="arrow">↓</div><div class="s"><img src="media/cam_bien_ph.png" alt=""></div><div class="t1">Vị giác</div><div class="t2">Cảm biến độ pH</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 INTERACTION -->
+  <div class="card cut has-capi reveal">
+    <div class="sec-head"><div class="num cut">02</div><div><small>Phần 2</small><h2>Các bộ phận phối hợp thế nào?</h2></div></div>
+    <p class="intro">Không bộ phận nào làm việc một mình. Thông tin chạy thành <b>một vòng khép kín</b>. Hãy nhìn các “gói tin” di chuyển:</p>
+
+    <div class="flow">
+      <div class="node n1"><div class="box cut"><span class="sonar"></span><span class="sonar d2"></span><span class="sonar d3"></span><img src="media/cam_bien_sieu_am_hcsr04.png" alt=""></div><div class="tag cut">① CẢM NHẬN</div><div class="part">Cảm biến</div><div class="what">Đo môi trường, gửi dữ liệu dưới dạng tín hiệu điện</div></div>
+      <div class="arr"><span class="packet p1"></span><svg viewBox="0 0 70 40"><path d="M4 20 H 56" stroke="#5B4A78" stroke-width="5" stroke-linecap="round"/><path d="M50 9 L 64 20 L 50 31" fill="none" stroke="#5B4A78" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>dữ liệu</span></div>
+      <div class="node n2"><div class="box cut"><span class="think">…?</span><img src="media/bo_dieu_khien_nextgen.png" alt=""></div><div class="tag cut">② SUY NGHĨ</div><div class="part">Bộ điều khiển</div><div class="what">Chạy chương trình, so sánh, quyết định phải làm gì</div></div>
+      <div class="arr"><span class="packet p2"></span><svg viewBox="0 0 70 40"><path d="M4 20 H 56" stroke="#5B4A78" stroke-width="5" stroke-linecap="round"/><path d="M50 9 L 64 20 L 50 31" fill="none" stroke="#5B4A78" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>lệnh điều khiển</span></div>
+      <div class="node n3"><div class="box cut"><img src="media/dong_co_giam_toc_vang.png" alt=""></div><div class="tag cut">③ HÀNH ĐỘNG</div><div class="part">Cơ cấu chấp hành</div><div class="what">Động cơ quay, tay gắp đóng mở, tác động lên môi trường</div></div>
+    </div>
+    <div class="feedback">
+      <svg viewBox="0 0 968 70" preserveAspectRatio="none"><path class="dash" d="M 806 4 V 40 Q 806 58 788 58 H 180 Q 162 58 162 40 V 14" fill="none" stroke="#1EA8E0" stroke-width="5" stroke-dasharray="12 9" stroke-linecap="round"/><path d="M 150 22 L 162 6 L 174 22" fill="none" stroke="#1EA8E0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p>④ PHẢN HỒI: môi trường thay đổi → cảm biến đo lại → vòng lặp tiếp tục</p>
+    </div>
+    <div class="power cut"><div class="bat">🔋</div><p><b>Nguồn điện</b> nuôi cả vòng lặp: thiếu pin, cảm biến không đo được, bộ điều khiển không chạy, động cơ không quay.</p></div>
+
+    <div class="human-row cut">
+      <h5>Ở người cũng vậy: bắt quả bóng</h5>
+      <div class="chain" data-chain><span>👀 Mắt thấy bóng bay tới</span><i>→</i><span>🧠 Não đoán hướng bay</span><i>→</i><span>✋ Tay đưa ra bắt</span><i>↺</i><span>Mắt theo dõi tiếp</span></div>
+    </div>
+    <div class="daily cut">
+      <h5>Ví dụ quanh em: máy điều hòa</h5>
+      <div class="chain" data-chain><span>🌡️ Cảm biến đo phòng 30°C</span><i>→</i><span>Bộ điều khiển: nóng hơn mức cài 26°C</span><i>→</i><span>❄️ Máy nén chạy, làm lạnh</span><i>↺</i><span>Đo lại đến khi đủ mát</span></div>
+    </div>
+    <img class="capi floaty" src="assets/capi_idea_lightbulb.png" alt="" style="right:30px;top:26px;width:150px">
+  </div>
+
+  <!-- 03 EXAMPLE + SIMULATOR -->
+  <div class="card cut reveal" id="vidu">
+    <div class="sec-head"><div class="num cut">03</div><div><small>Phần 3 · Ví dụ</small><h2>Robot tự tránh vật cản</h2></div></div>
+    <div class="scenario cut"><img src="media/robot_nextgen.jpg" alt=""><p>Robot gắp đồ vật đang <b>chạy thẳng</b> thì phía trước xuất hiện <b>một thùng giấy</b>. Bấm <b>▶ Chạy</b> để xem robot làm gì, và thử đổi <b>khoảng cách an toàn</b> nhé!</p></div>
+
+    <div class="sim cut">
+      <svg id="scene" viewBox="0 0 960 360">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0 H0 V40" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="2"/></pattern>
+          <radialGradient id="cone" cx="0" cy="0.5" r="1"><stop offset="0" stop-color="#1EA8E0" stop-opacity=".45"/><stop offset="1" stop-color="#1EA8E0" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="960" height="360" fill="#141A52"/><rect width="960" height="360" fill="url(#grid)"/>
+        <g id="safeZone"><rect id="safeRect" x="0" y="60" width="0" height="140" fill="rgba(240,138,36,.12)" stroke="rgba(240,138,36,.6)" stroke-dasharray="8 6"/><text id="safeTxt" x="0" y="52" fill="#FFB46B" font-family="Montserrat" font-weight="800" font-size="15" text-anchor="middle">vùng an toàn</text></g>
+        <image id="box" href="media/thung_giay.png" x="720" y="70" width="120" height="120"/>
+        <g id="ruler"><line id="rLine" x1="0" y1="225" x2="0" y2="225" stroke="#FFD479" stroke-width="3" stroke-dasharray="6 5"/><text id="rTxt" x="0" y="250" fill="#FFD479" font-family="JetBrains Mono" font-weight="700" font-size="18" text-anchor="middle"></text></g>
+        <g id="robot">
+          <g id="waves"></g>
+          <path d="M60 -46 L 300 -120 L 300 120 L 60 46 Z" fill="url(#cone)" id="coneShape"/>
+          <rect x="-46" y="-44" width="24" height="16" rx="4" fill="#222" /><rect x="-46" y="28" width="24" height="16" rx="4" fill="#222" />
+          <rect x="22" y="-44" width="24" height="16" rx="4" fill="#333" /><rect x="22" y="28" width="24" height="16" rx="4" fill="#333" />
+          <rect x="-50" y="-30" width="100" height="60" rx="8" fill="#ECEFF4" stroke="#5CC4F2" stroke-width="4"/>
+          <rect x="-20" y="-16" width="40" height="32" rx="5" fill="#2E3A8C"/>
+          <rect x="-36" y="-4" width="72" height="8" fill="#111"/>
+          <rect x="50" y="-12" width="14" height="24" rx="3" fill="#1E5FBF"/><circle cx="60" cy="-6" r="4" fill="#CFE9FF"/><circle cx="60" cy="6" r="4" fill="#CFE9FF"/>
+          <path d="M64 -18 L 84 -24 M64 18 L 84 24" stroke="#F08A24" stroke-width="6" stroke-linecap="round"/>
+          <text id="wL" x="-34" y="-50" fill="#9BE7FF" font-family="Montserrat" font-weight="800" font-size="16" text-anchor="middle"></text>
+          <text id="wR" x="-34" y="66" fill="#9BE7FF" font-family="Montserrat" font-weight="800" font-size="16" text-anchor="middle"></text>
+        </g>
+        <text id="banner" x="480" y="335" fill="#fff" font-family="Montserrat" font-weight="800" font-size="20" text-anchor="middle">Bấm ▶ Chạy để bắt đầu</text>
+      </svg>
+      <div class="hud">
+        <div>THỜI GIAN SÓNG ĐI–VỀ<b id="hT">–</b></div>
+        <div>KHOẢNG CÁCH ĐO ĐƯỢC<b id="hD">–</b></div>
+        <div class="dec">QUYẾT ĐỊNH<b id="hDec">–</b></div>
+      </div>
+      <div class="ctrl">
+        <button class="cut" id="btnRun">▶ Chạy</button>
+        <button class="cut ghost" id="btnReset">↺ Làm lại</button>
+        <label>Khoảng cách an toàn <input type="range" id="thr" min="10" max="40" step="5" value="20"><output id="thrOut">20 cm</output></label>
+      </div>
+    </div>
+
+    <div class="steps" id="steps">
+      <div class="step" data-s="1"><div class="b cut" style="background:var(--sense)">1</div>
+        <div><h3><em class="cut" style="background:var(--sense);--cut:6px">CẢM NHẬN</em>Phát sóng và nghe tiếng vọng</h3><p>Cảm biến siêu âm phát sóng âm, sóng chạm thùng giấy rồi dội lại. Cảm biến đo được thời gian đi và về, ví dụ <b>0,001 giây</b>.</p></div>
+        <div class="pic"><img src="media/song_sieu_am.png" alt=""></div></div>
+      <div class="step" data-s="2"><div class="b cut" style="background:var(--think)">2</div>
+        <div><h3><em class="cut" style="background:var(--think);--cut:6px">SUY NGHĨ</em>Tính khoảng cách</h3><p>Bộ điều khiển nhận dữ liệu và tính:</p><div class="formula">(343 m/s × 0,001 s) ÷ 2 ≈ 0,17 m = 17 cm</div><p style="font-size:16px">Chia 2 vì sóng phải đi tới vật rồi quay về.</p></div>
+        <div class="pic"><img src="media/bo_dieu_khien_nextgen.png" alt=""></div></div>
+      <div class="step" data-s="3"><div class="b cut" style="background:var(--think)">3</div>
+        <div><h3><em class="cut" style="background:var(--think);--cut:6px">SUY NGHĨ</em>Ra quyết định</h3><p>Chương trình so sánh: <b>17 cm &lt; 20 cm</b> (khoảng cách an toàn) → có vật cản, <b>phải rẽ</b>.</p></div>
+        <div class="pic"><img src="media/chip_vi_dieu_khien.png" alt=""></div></div>
+      <div class="step" data-s="4"><div class="b cut" style="background:var(--act)">4</div>
+        <div><h3><em class="cut" style="background:var(--act);--cut:6px">HÀNH ĐỘNG</em>Ra lệnh cho động cơ</h3><p>Bánh trái quay tiến, bánh phải quay lùi → robot <b>xoay sang phải</b>, tránh thùng giấy.</p></div>
+        <div class="pic"><img src="media/dong_co_giam_toc_vang.png" alt=""></div></div>
+      <div class="step" data-s="5"><div class="b cut" style="background:var(--pb)">5</div>
+        <div><h3><em class="cut" style="background:var(--pb);--cut:6px">LẶP LẠI</em>Đo lại liên tục</h3><p>Robot đo lại nhiều lần mỗi giây. Khi phía trước trống (khoảng cách ≥ khoảng cách an toàn) → <b>đi thẳng</b> tiếp.</p></div>
+        <div class="pic" style="font-size:64px;color:var(--pb)">↺</div></div>
+    </div>
+
+    <div class="code cut">
+      <div class="ttl">CHƯƠNG TRÌNH CỦA ROBOT (MÃ GIẢ) · dòng đang chạy sẽ sáng lên</div>
+<span class="ln" data-l="0"><span class="k">lặp mãi mãi:</span></span><span class="ln" data-l="1">    d = <span class="f">đo_khoảng_cách</span>()     <span class="c1"># ① cảm biến</span></span><span class="ln" data-l="2">    <span class="k">nếu</span> d &lt; <span class="n" id="codeThr">20</span> cm:           <span class="c2"># ② bộ điều khiển</span></span><span class="ln" data-l="3">        <span class="f">rẽ_phải</span>()            <span class="c3"># ③ động cơ</span></span><span class="ln" data-l="4">    <span class="k">ngược lại:</span></span><span class="ln" data-l="5">        <span class="f">đi_thẳng</span>()           <span class="c3"># ③ động cơ</span></span>
+      <div class="legend"><span style="color:#5CC8F0">Cảm nhận</span><span style="color:#D79BE8">Suy nghĩ</span><span style="color:#FFB46B">Hành động</span></div>
+    </div>
+    <img class="capi floaty" src="assets/capi_laptop_coding.png" alt="" style="right:24px;top:24px;width:190px">
+  </div>
+
+  <!-- 04 CHALLENGE -->
+  <div class="card cut reveal">
+    <div class="sec-head"><div class="num cut">04</div><div><small>Thử thách</small><h2>Em hãy nhận diện các bộ phận!</h2></div></div>
+    <div class="quiz">
+      <div class="photo cut" id="quizPhoto">
+        <img src="media/robot_nextgen.jpg" alt="">
+        <button class="mk" data-q="1" style="left:13%;top:62%">1<span class="bub">Tay gắp</span></button>
+        <button class="mk" data-q="2" style="left:58%;top:47%">2<span class="bub">Bộ điều khiển</span></button>
+        <button class="mk" data-q="3" style="left:85%;top:70%">3<span class="bub">Bánh xe &amp; động cơ</span></button>
+        <button class="mk" data-q="4" style="left:64%;top:12%">4<span class="bub">Động cơ</span></button>
+        <button class="mk" data-q="5" style="left:33%;top:30%">5<span class="bub">Khung nhôm</span></button>
+      </div>
+      <div>
+        <p class="intro" style="margin-top:0">Bộ phận số mấy là <b>giác quan</b>, <b>bộ não</b> hay <b>cơ bắp</b> của robot? Tự đoán trước, rồi <b>bấm vào số</b> để kiểm tra!</p>
+        <ul class="blanks" id="blanks">
+          <li data-q="1"><i>1</i><span></span></li><li data-q="2"><i>2</i><span></span></li><li data-q="3"><i>3</i><span></span></li><li data-q="4"><i>4</i><span></span></li><li data-q="5"><i>5</i><span></span></li>
+        </ul>
+        <button class="qbtn cut" id="showAll">Xem tất cả đáp án</button>
+      </div>
+    </div>
+    <img class="capi floaty" src="assets/capi_megaphone.png" alt="" style="right:30px;top:22px;width:150px">
+  </div>
+
+  <footer>
+    <div class="l"><img class="ayor" src="assets/logo_ayor2026_badge_white_outline.png" alt=""><img class="steam" src="assets/logo_steam_for_vietnam_white.png" alt=""></div>
+    <div class="tag cut">#AYOR2026</div>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* reveal on scroll */
+  const revs = document.querySelectorAll(".reveal, .stagger");
+  if ("IntersectionObserver" in window && !reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.12 });
+    revs.forEach(el => io.observe(el));
+  } else revs.forEach(el => el.classList.add("in"));
+
+  /* cycling highlights */
+  const cycle = (els, ms) => { let i = 0; if (!els.length) return; setInterval(() => { els.forEach(e => e.classList.remove("on")); els[i = (i + 1) % els.length].classList.add("on"); }, ms); };
+  cycle([...document.querySelectorAll("#loopPill span")], 1100);
+  const senses = [...document.querySelectorAll("#senses .sense")];
+  let senseTimer = setInterval(() => { const i = senses.findIndex(s => s.classList.contains("on")); senses.forEach(s => s.classList.remove("on")); senses[(i + 1) % senses.length].classList.add("on"); }, 1800);
+  senses.forEach(s => s.addEventListener("mouseenter", () => { clearInterval(senseTimer); senses.forEach(x => x.classList.remove("on")); s.classList.add("on"); }));
+  document.querySelectorAll("[data-chain]").forEach(c => cycle([...c.querySelectorAll("span")], 1300));
+
+  /* comparison rows */
+  document.querySelectorAll("#cmp .row").forEach(r => r.addEventListener("click", () => {
+    const on = r.classList.contains("active");
+    document.querySelectorAll("#cmp .row").forEach(x => x.classList.remove("active"));
+    if (!on) r.classList.add("active");
+  }));
+
+  /* quiz */
+  const answers = { 1: "Tay gắp", 2: "Bộ điều khiển", 3: "Bánh xe & động cơ", 4: "Động cơ", 5: "Khung nhôm" };
+  const roles = { 1: "cơ bắp", 2: "bộ não", 3: "cơ bắp", 4: "cơ bắp", 5: "bộ xương" };
+  const reveal = q => {
+    document.querySelector(`.mk[data-q="${q}"]`).classList.add("done");
+    const li = document.querySelector(`#blanks li[data-q="${q}"]`); li.classList.add("done");
+    li.querySelector("span").innerHTML = `${answers[q]} <em>(${roles[q]})</em>`;
+  };
+  document.querySelectorAll(".mk, #blanks li").forEach(el => el.addEventListener("click", () => reveal(el.dataset.q)));
+  document.getElementById("showAll").addEventListener("click", () => Object.keys(answers).forEach(reveal));
+
+  /* simulator */
+  const PX = 6;                 // pixels per cm
+  const $ = id => document.getElementById(id);
+  const robot = $("robot"), waves = $("waves");
+  const steps = [...document.querySelectorAll("#steps .step")], lines = [...document.querySelectorAll(".code .ln")];
+  const BOX_LEFT = 720, FRONT = 64;
+  let st, raf = null, last = 0, waveT = 0;
+  const thr = () => +$("thr").value;
+  const setStep = n => steps.forEach(s => s.classList.toggle("on", +s.dataset.s === n));
+  const setLines = arr => lines.forEach(l => l.classList.toggle("on", arr.includes(+l.dataset.l)));
+  function reset() {
+    cancelAnimationFrame(raf); raf = null;
+    st = { x: 140, y: 130, a: 0, phase: "idle", t: 0 };
+    waves.innerHTML = ""; setStep(0); setLines([]);
+    $("hT").textContent = "–"; $("hD").textContent = "–"; $("hDec").textContent = "–";
+    $("banner").textContent = "Bấm ▶ Chạy để bắt đầu"; $("wL").textContent = ""; $("wR").textContent = "";
+    $("btnRun").textContent = "▶ Chạy"; draw();
+  }
+  function frontDist() {
+    if (Math.abs(st.a) > 5) return null;        // after turning the box is no longer ahead
+    return (BOX_LEFT - (st.x + FRONT)) / PX;
+  }
+  function draw() {
+    robot.setAttribute("transform", `translate(${st.x} ${st.y}) rotate(${st.a})`);
+    const sx = BOX_LEFT - thr() * PX;
+    $("safeRect").setAttribute("x", sx); $("safeRect").setAttribute("width", BOX_LEFT - sx);
+    $("safeTxt").setAttribute("x", sx + (BOX_LEFT - sx) / 2);
+    const d = frontDist();
+    $("ruler").style.display = d === null ? "none" : "";
+    if (d !== null) {
+      const x1 = st.x + FRONT;
+      $("rLine").setAttribute("x1", x1); $("rLine").setAttribute("x2", BOX_LEFT);
+      $("rTxt").setAttribute("x", (x1 + BOX_LEFT) / 2); $("rTxt").textContent = `${d.toFixed(0)} cm`;
+    }
+    $("coneShape").style.opacity = st.phase === "idle" ? .4 : 1;
+  }
+  function ping(dt) {
+    waveT += dt;
+    if (waveT > 0.35) {
+      waveT = 0;
+      const c = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      c.setAttribute("d", "M70 -20 Q 82 0 70 20"); c.setAttribute("fill", "none"); c.setAttribute("stroke", "#5CC4F2"); c.setAttribute("stroke-width", "4");
+      c.dataset.t = 0; waves.appendChild(c);
+    }
+    [...waves.children].forEach(w => {
+      const t = +w.dataset.t + dt; w.dataset.t = t;
+      const s = 1 + t * 3.2; w.setAttribute("transform", `translate(${t * 260} 0) scale(${s})`); w.setAttribute("opacity", Math.max(0, 1 - t * 1.4));
+      if (t > 0.8) w.remove();
+    });
+  }
+  function measure() {
+    const d = frontDist();
+    if (d === null || d > 200) { $("hT").textContent = "chưa có vọng"; $("hD").textContent = "> 2 m"; return Infinity; }
+    const t = (2 * d / 100) / 343;
+    $("hT").textContent = t.toFixed(4).replace(".", ",") + " s";
+    $("hD").textContent = d.toFixed(0) + " cm";
+    return d;
+  }
+  function tick(now) {
+    const dt = Math.min(0.05, (now - last) / 1000 || 0); last = now;
+    ping(dt);
+    const d = measure();
+    if (st.phase === "forward") {
+      if (d < thr()) { st.phase = "turn"; st.t = 0; }
+      else {
+        st.x += 70 * dt;
+        setStep(d === Infinity ? 5 : (Math.floor(now / 700) % 2 ? 1 : 2)); setLines([1, 4, 5]);
+        $("hDec").textContent = `${isFinite(d) ? d.toFixed(0) : ">200"} ≥ ${thr()} → đi thẳng`;
+        $("banner").textContent = "Phía trước còn trống: hai bánh cùng quay tiến";
+        $("wL").textContent = "▲"; $("wR").textContent = "▲";
+      }
+    }
+    if (st.phase === "turn") {
+      st.t += dt; st.a = Math.min(90, st.t / 1.4 * 90);
+      setStep(st.t < 0.6 ? 3 : 4); setLines([2, 3]);
+      $("hDec").textContent = `vật cản < ${thr()} cm → rẽ phải`;
+      $("banner").textContent = "Có vật cản! Bánh trái quay tiến, bánh phải quay lùi";
+      $("wL").textContent = "▲"; $("wR").textContent = "▼";
+      if (st.a >= 90) { st.phase = "after"; st.t = 0; }
+    }
+    if (st.phase === "after") {
+      st.t += dt; st.y += 70 * dt;
+      setStep(5); setLines([1, 4, 5]);
+      $("hDec").textContent = "phía trước trống → đi thẳng";
+      $("banner").textContent = "Đã tránh được thùng giấy! Robot vẫn đo liên tục";
+      $("wL").textContent = "▲"; $("wR").textContent = "▲";
+      if (st.y > 235) { st.phase = "done"; $("banner").textContent = "Xong! Thử đổi khoảng cách an toàn rồi chạy lại"; $("btnRun").textContent = "▶ Chạy lại"; draw(); return; }
+    }
+    draw(); raf = requestAnimationFrame(tick);
+  }
+  $("btnRun").addEventListener("click", () => {
+    if (st.phase === "done") reset();
+    if (raf) { cancelAnimationFrame(raf); raf = null; $("btnRun").textContent = "▶ Tiếp tục"; return; }
+    if (st.phase === "idle") st.phase = "forward";
+    $("btnRun").textContent = "⏸ Tạm dừng"; last = performance.now(); raf = requestAnimationFrame(tick);
+  });
+  $("btnReset").addEventListener("click", reset);
+  $("thr").addEventListener("input", () => { $("thrOut").textContent = thr() + " cm"; $("codeThr").textContent = thr(); draw(); });
+  reset();
+  // auto-run once when the simulator scrolls into view
+  if ("IntersectionObserver" in window && !reduce) {
+    const io2 = new IntersectionObserver(es => { if (es[0].isIntersecting && st.phase === "idle") { $("btnRun").click(); io2.disconnect(); } }, { threshold: 0.6 });
+    io2.observe($("scene"));
+  }
+})();
+</script>
+</body>
+</html>
