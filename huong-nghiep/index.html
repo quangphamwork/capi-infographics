@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Học gì để làm robot? – Hướng nghiệp Robotics</title>
+<meta name="description" content="Infographic tương tác: hướng nghiệp ngành Robotics – AYOR 2026, STEAM for Vietnam">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Montserrat:wght@600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #71377F; --pb: #A14AAE; --violet: #8244A4; --indigo: #351C75; --navy: #202E66;
+    --pink: #CB6CE6; --ink: #2A1650; --muted: #5B4A78; --lilac: #F3EAFB; --lilac2: #E8D8F6; --cut: 28px;
+    --mech: #F08A24; --elec: #1EA8E0; --code: #A14AAE; --ctrl: #12A99B; --tech: #E8175D; --soft: #6B46B6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Quicksand", sans-serif; color: var(--ink); min-height: 100vh;
+    background: linear-gradient(170deg, #7A3A8E 0%, #4A2A7A 25%, #2E2A6A 60%, #202E66 100%); }
+  body.static { width: 1080px; }
+  .page { max-width: 1080px; margin: 0 auto; padding: 56px 56px 0; }
+  .cut { clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut))); }
+  b { color: var(--ink); font-weight: 700; }
+  button { font: inherit; cursor: pointer; border: 0; }
+  a { color: inherit; }
+
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .stagger > * { opacity: 0; transform: translateY(24px); transition: opacity .5s ease, transform .5s ease; }
+  .stagger.in > * { opacity: 1; transform: none; }
+  .stagger > *:nth-child(2) { transition-delay: .08s } .stagger > *:nth-child(3) { transition-delay: .16s }
+  .stagger > *:nth-child(4) { transition-delay: .24s } .stagger > *:nth-child(5) { transition-delay: .32s }
+  .stagger > *:nth-child(6) { transition-delay: .40s }
+  @keyframes bob { 0%,100% { transform: translateY(0) rotate(-2deg) } 50% { transform: translateY(-14px) rotate(2deg) } }
+  @keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+  .bob { animation: bob 3.2s ease-in-out infinite; } .floaty { animation: floaty 2.6s ease-in-out infinite; }
+
+  .logos { display: flex; align-items: center; gap: 22px; }
+  .logos .ayor { height: 78px; } .logos .steam { height: 54px; }
+  .hero { position: relative; margin-top: 36px; min-height: 380px; }
+  .eyebrow { display: inline-block; font-family: "Audiowide", sans-serif; font-size: 22px; letter-spacing: 3px; color: #fff; background: var(--pb); padding: 8px 22px; --cut: 12px; }
+  h1 { font-family: "Montserrat", sans-serif; font-weight: 900; color: #fff; font-size: 72px; line-height: 1.04; margin-top: 22px; max-width: 640px; letter-spacing: -1px; }
+  h1 span { color: var(--pink); }
+  .lede { color: #E9DDF7; font-size: 27px; font-weight: 600; margin-top: 20px; max-width: 600px; line-height: 1.4; }
+  .hero .capi { position: absolute; right: -10px; top: -10px; width: 330px; filter: drop-shadow(0 18px 24px rgba(10,5,40,.45)); }
+  .hint { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; color: #fff; font-weight: 700; font-size: 18px; background: rgba(255,255,255,.14); padding: 8px 16px; border-radius: 999px; }
+  .static .hint { display: none; }
+
+  .card { position: relative; background: #fff; padding: 40px 40px 44px; margin-top: 36px; --cut: 34px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; padding-right: 160px; }
+  .num { flex: none; width: 70px; height: 70px; --cut: 15px; background: var(--purple); color: #fff; display: grid; place-items: center; font-family: "Audiowide", sans-serif; font-size: 30px; }
+  .sec-head small { display: block; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 17px; letter-spacing: 1.6px; color: var(--pb); text-transform: uppercase; }
+  h2 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 38px; line-height: 1.12; color: var(--indigo); }
+  .intro { font-size: 23px; line-height: 1.45; font-weight: 600; color: var(--muted); margin-top: 18px; }
+  .card .capi { position: absolute; filter: drop-shadow(0 10px 14px rgba(40,20,90,.22)); }
+  .tip { display: inline-block; margin-top: 12px; font-size: 16px; font-weight: 700; color: var(--pb); background: var(--lilac); padding: 4px 12px; border-radius: 999px; }
+  .static .tip { display: none; }
+
+  /* interdisciplinary */
+  .multi { display: grid; grid-template-columns: 330px 1fr; gap: 30px; margin-top: 24px; align-items: center; }
+  .multi > img { width: 100%; }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .fd { padding: 16px 18px; --cut: 16px; color: #fff; transition: transform .3s; }
+  .fd:hover { transform: translateY(-4px) scale(1.02); }
+  .fd h3 { font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 22px; line-height: 1.15; }
+  .fd p { font-size: 17px; font-weight: 600; margin-top: 6px; line-height: 1.35; color: rgba(255,255,255,.95); }
+  .fd p em { font-style: normal; background: rgba(255,255,255,.22); padding: 1px 8px; border-radius: 6px; font-weight: 700; }
+  .callback { margin-top: 20px; background: #FFF6E5; border: 2px dashed #F0A43C; color: #8A4B00; padding: 12px 18px; font-size: 19px; font-weight: 600; border-radius: 12px; line-height: 1.4; }
+  .callback b { color: #6B3A00; }
+
+  /* roles */
+  .roles { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+  .role { position: relative; background: #fff; border: 3px solid var(--c); --cut: 22px; padding: 0 0 18px; transition: transform .3s, box-shadow .3s, opacity .3s; }
+  .role .pic { height: 170px; background: #F7F8FC; display: grid; place-items: center; overflow: hidden; }
+  .role .pic img { width: 100%; height: 100%; object-fit: cover; }
+  .role .pic img.contain { object-fit: contain; background: #fff; }
+  .role .tag { position: absolute; top: 12px; left: 12px; background: var(--c); color: #fff; font-family: "Audiowide", sans-serif; font-size: 18px; width: 44px; height: 44px; --cut: 10px; display: grid; place-items: center; }
+  .role h3 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 25px; color: var(--indigo); margin: 14px 18px 0; }
+  .role ul { list-style: none; margin: 8px 18px 0; }
+  .role li { position: relative; padding-left: 22px; font-size: 17.5px; line-height: 1.38; font-weight: 600; color: var(--muted); margin-top: 4px; }
+  .role li::before { content: ""; position: absolute; left: 2px; top: 9px; width: 10px; height: 10px; background: var(--c); transform: rotate(45deg); }
+  .role .meta { margin: 12px 18px 0; display: grid; gap: 6px; }
+  .role .meta div { font-size: 16px; font-weight: 700; color: var(--ink); background: var(--lilac); padding: 6px 10px; border-radius: 8px; line-height: 1.35; }
+  .role .meta span { color: var(--c); font-family: "Montserrat"; font-weight: 800; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; display: block; }
+  .role:hover { transform: translateY(-6px); box-shadow: 0 14px 26px rgba(40,20,90,.18); }
+  .roles.filtering .role { opacity: .3; transform: scale(.97); }
+  .roles.filtering .role.match { opacity: 1; transform: translateY(-6px); box-shadow: 0 0 0 4px var(--c), 0 16px 30px rgba(40,20,90,.25); }
+  .role .star { position: absolute; top: 12px; right: 12px; background: #FFD479; color: #6B3A00; font-family: "Montserrat"; font-weight: 900; font-size: 15px; padding: 5px 10px; border-radius: 999px; display: none; }
+  .roles.filtering .role.match .star { display: block; }
+
+  /* team */
+  .pipeline { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 24px; }
+  .pp { text-align: center; }
+  .pp .ic { height: 120px; --cut: 14px; overflow: hidden; background: #F7F8FC; }
+  .pp .ic img { width: 100%; height: 100%; object-fit: cover; }
+  .pp .n { display: inline-block; margin-top: -18px; position: relative; width: 38px; height: 38px; --cut: 8px; background: var(--c); color: #fff; font-family: "Audiowide"; font-size: 18px; line-height: 38px; }
+  .pp h4 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 16px; color: var(--indigo); line-height: 1.2; margin-top: 6px; }
+  .pp p { font-size: 14px; font-weight: 700; color: var(--c); margin-top: 4px; }
+  .arrowline { height: 6px; margin-top: 16px; background: linear-gradient(90deg, var(--mech), var(--elec), var(--code), var(--soft), var(--ctrl), var(--tech)); border-radius: 3px; position: relative; }
+  .arrowline::after { content: ""; position: absolute; right: -4px; top: -7px; border: 10px solid transparent; border-left: 14px solid var(--tech); }
+
+  .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 26px; }
+  .prod { background: var(--lilac); --cut: 18px; overflow: hidden; display: flex; flex-direction: column; }
+  .prod .img { position: relative; height: 170px; }
+  .prod .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .prod .play { position: absolute; right: 10px; bottom: 10px; background: #fff; color: var(--pb); font-family: "Montserrat"; font-weight: 800; font-size: 14px; padding: 6px 12px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,.25); }
+  .static .prod .play { display: none; }
+  .prod h4 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 19px; color: var(--indigo); padding: 12px 14px 0; line-height: 1.2; }
+  .prod p { font-size: 16px; font-weight: 600; color: var(--muted); padding: 6px 14px 14px; line-height: 1.38; }
+
+  /* two paths */
+  .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+  .path { --cut: 22px; padding: 0 0 20px; background: var(--lilac); }
+  .path .img { height: 190px; overflow: hidden; } .path .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .path h3 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 24px; color: var(--indigo); margin: 14px 18px 0; line-height: 1.15; }
+  .path .d { font-size: 17px; font-weight: 600; color: var(--muted); margin: 6px 18px 0; line-height: 1.38; }
+  .pc { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 18px 0; }
+  .pc div { background: #fff; border-radius: 10px; padding: 10px 12px; }
+  .pc h5 { font-family: "Montserrat"; font-weight: 800; font-size: 15px; letter-spacing: 1px; }
+  .pc .pro h5 { color: #12A99B; } .pc .con h5 { color: #E8175D; }
+  .pc ul { list-style: none; margin-top: 4px; }
+  .pc li { font-size: 15.5px; font-weight: 600; color: var(--muted); line-height: 1.35; margin-top: 3px; padding-left: 14px; position: relative; }
+  .pc li::before { content: "•"; position: absolute; left: 0; color: var(--pb); font-weight: 900; }
+  .pc.hidden { filter: blur(7px); user-select: none; }
+  .reveal-btn { margin: 12px 18px 0; font-family: "Montserrat"; font-weight: 800; font-size: 15px; color: #fff; background: var(--pb); padding: 8px 14px; --cut: 8px; }
+  .static .reveal-btn { display: none; }
+  .discuss { margin-top: 18px; text-align: center; font-size: 20px; font-weight: 700; color: var(--violet); }
+
+  /* roadmap */
+  .road { display: grid; grid-template-columns: 1fr 50px 1fr 50px 1fr; align-items: stretch; margin-top: 26px; }
+  .stp { --cut: 20px; padding: 18px 18px 20px; color: #fff; }
+  .stp small { font-family: "Audiowide"; font-size: 15px; letter-spacing: 2px; opacity: .9; }
+  .stp h3 { font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 23px; margin-top: 4px; line-height: 1.15; }
+  .stp ul { list-style: none; margin-top: 10px; }
+  .stp li { font-size: 16.5px; font-weight: 600; line-height: 1.38; margin-top: 6px; padding-left: 16px; position: relative; }
+  .stp li::before { content: "▸"; position: absolute; left: 0; }
+  .rar { display: grid; place-items: center; font-family: "Montserrat"; font-weight: 900; font-size: 36px; color: var(--pb); }
+
+  /* finder */
+  .finder { margin-top: 28px; background: linear-gradient(135deg, #F7EFFC, #EEE4FA); padding: 24px 26px 26px; --cut: 22px; }
+  .finder h4 { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 24px; color: var(--indigo); }
+  .finder p.s { font-size: 18px; font-weight: 600; color: var(--muted); margin-top: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .chip { font-size: 18px; font-weight: 700; color: var(--purple); background: #fff; padding: 10px 16px; --cut: 10px; transition: background .2s, color .2s, transform .2s; }
+  .chip:hover { transform: translateY(-2px); }
+  .chip.on { background: var(--pb); color: #fff; }
+  .chip i { font-style: normal; display: none; font-size: 14px; font-weight: 700; color: var(--pb); margin-left: 6px; }
+  .static .chip i { display: inline; }
+  .result { margin-top: 16px; font-size: 20px; font-weight: 700; color: var(--indigo); min-height: 30px; }
+  .static .result { display: none; }
+  .reset { margin-left: 10px; font-size: 15px; font-weight: 700; color: var(--pb); background: none; text-decoration: underline; }
+
+  footer { margin-top: 44px; padding: 28px 0 40px; border-top: 2px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: space-between; }
+  footer .l { display: flex; align-items: center; gap: 18px; }
+  footer .ayor { height: 62px; } footer .steam { height: 44px; }
+  footer .tag { font-family: "Audiowide", sans-serif; color: #fff; font-size: 20px; letter-spacing: 2px; border: 2px solid rgba(255,255,255,.8); padding: 8px 18px; --cut: 10px; }
+
+  @media (max-width: 900px) {
+    .page { padding: 32px 16px 0; } h1 { font-size: 42px; } .hero .capi { width: 150px; top: 130px; } .hero { min-height: 440px; }
+    .card { padding: 26px 18px 30px; } .sec-head { padding-right: 0; } .card .capi { display: none; }
+    .multi, .roles, .paths, .products { grid-template-columns: 1fr; } .fields { grid-template-columns: 1fr; }
+    .pipeline { grid-template-columns: repeat(3, 1fr); row-gap: 20px; } .arrowline { display: none; }
+    .road { grid-template-columns: 1fr; } .rar { transform: rotate(90deg); padding: 4px 0; } .pc { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="logos">
+    <img class="ayor" src="assets/logo_ayor2026_badge_white_outline.png" alt="AYOR 2026">
+    <img class="steam" src="assets/logo_steam_for_vietnam_white.png" alt="STEAM for Vietnam">
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow cut">HƯỚNG NGHIỆP ROBOTICS</div>
+    <h1>Học gì để<br><span>làm robot?</span></h1>
+    <p class="lede">Thích lắp ráp, mê mạch điện, nghiện viết code hay giỏi toán? Ngành Robotics đều có chỗ cho em!</p>
+    <div class="hint">👆 Bấm chọn sở thích ở phần 4 để tìm nghề hợp với em</div>
+    <img class="capi bob" src="assets/capi_visor_waving.png" alt="">
+  </section>
+
+  <!-- A. INTERDISCIPLINARY -->
+  <div class="card cut reveal">
+    <div class="sec-head"><div class="num cut">★</div><div><small>Mở đầu</small><h2>Robotics là ngành “liên ngành”</h2></div></div>
+    <p class="intro">Một robot là sự kết hợp của nhiều lĩnh vực. Vì vậy có <b>rất nhiều con đường</b> để em làm việc với robot.</p>
+    <div class="multi">
+      <img src="media/venn_robotics.png" alt="Robotics là giao của cơ khí, điện tử, máy tính và điều khiển">
+      <div class="fields stagger">
+        <div class="fd cut" style="background:var(--mech)"><h3>⚙️ Cơ khí</h3><p>Làm ra <em>bộ xương &amp; cơ bắp</em>: khung, khớp, bánh xe, tay gắp</p></div>
+        <div class="fd cut" style="background:var(--elec)"><h3>🔌 Điện – điện tử</h3><p>Làm ra <em>dây thần kinh &amp; giác quan</em>: mạch, cảm biến, nguồn</p></div>
+        <div class="fd cut" style="background:var(--code)"><h3>💻 Máy tính &amp; lập trình</h3><p>Làm ra <em>bộ não</em>: chương trình, phần mềm, AI</p></div>
+        <div class="fd cut" style="background:var(--ctrl)"><h3>🎯 Điều khiển tự động</h3><p>Giúp robot <em>phản xạ khéo léo</em>: thuật toán chạy êm, chính xác</p></div>
+      </div>
+    </div>
+    <div class="callback">🔁 <b>Nhớ bài “Robot được cấu tạo như thế nào?”</b> Mỗi bộ phận của robot (khung, cảm biến, bộ điều khiển…) đều cần những kỹ sư riêng để làm ra nó.</div>
+  </div>
+
+  <!-- 01 ROLES -->
+  <div class="card cut reveal">
+    <div class="sec-head"><div class="num cut">01</div><div><small>Phần 1</small><h2>6 vị trí kỹ thuật trong ngành robotics</h2></div></div>
+    <p class="intro">Mỗi vị trí phụ trách một phần của robot. Xem họ <b>làm gì</b>, <b>học ngành gì</b> và cần <b>giỏi môn nào</b>.</p>
+    <div class="roles stagger" id="roles">
+      <div class="role cut" data-r="co_khi" style="--c:var(--mech)"><div class="pic"><img src="media/ky_su_co_khi_cad.jpg" alt=""></div><div class="tag cut">1</div><div class="star">★ Hợp với em</div>
+        <h3>Kỹ sư cơ khí</h3>
+        <ul><li>Phân tích, tính toán, mô phỏng</li><li>Thiết kế 3D, dựng bản vẽ kỹ thuật</li><li>Chế tạo mẫu, gia công, lắp ráp, kiểm tra</li></ul>
+        <div class="meta"><div><span>Ngành học gợi ý</span>Kỹ thuật cơ khí, Cơ điện tử</div><div><span>Môn nên giỏi</span>Toán, Vật lý, Công nghệ</div></div></div>
+      <div class="role cut" data-r="dien_tu" style="--c:var(--elec)"><div class="pic"><img src="media/ky_su_dien_tu_pcb.png" alt=""></div><div class="tag cut">2</div><div class="star">★ Hợp với em</div>
+        <h3>Kỹ sư điện tử</h3>
+        <ul><li>Phát triển, thiết kế mạch điện tử (PCB)</li><li>Tham gia, giám sát quá trình sản xuất</li><li>Test và kiểm tra chất lượng sản phẩm</li></ul>
+        <div class="meta"><div><span>Ngành học gợi ý</span>Kỹ thuật điện tử – viễn thông, Kỹ thuật điện</div><div><span>Môn nên giỏi</span>Vật lý, Toán</div></div></div>
+      <div class="role cut" data-r="lap_trinh" style="--c:var(--code)"><div class="pic"><img class="contain" src="media/ky_su_lap_trinh.jpg" alt=""></div><div class="tag cut">3</div><div class="star">★ Hợp với em</div>
+        <h3>Kỹ sư lập trình robot</h3>
+        <ul><li>Thiết kế khung chương trình điều khiển robot</li><li>Lập trình robot, cảm biến, thiết bị ngoại vi</li></ul>
+        <div class="meta"><div><span>Ngành học gợi ý</span>Kỹ thuật máy tính, Cơ điện tử, Robot &amp; AI</div><div><span>Môn nên giỏi</span>Tin học, Toán</div></div></div>
+      <div class="role cut" data-r="phan_mem" style="--c:var(--soft)"><div class="pic"><img src="media/rd_ban_do_robotnet.jpg" alt=""></div><div class="tag cut">4</div><div class="star">★ Hợp với em</div>
+        <h3>Kỹ sư thiết kế phần mềm</h3>
+        <ul><li>Phần mềm điều khiển, giao tiếp với robot</li><li>Thiết kế giao diện người dùng</li><li>Bảo trì, nâng cấp, cập nhật phần mềm</li></ul>
+        <div class="meta"><div><span>Ngành học gợi ý</span>Khoa học máy tính, Kỹ thuật phần mềm</div><div><span>Môn nên giỏi</span>Tin học, Toán, Tiếng Anh</div></div></div>
+      <div class="role cut" data-r="dieu_khien" style="--c:var(--ctrl)"><div class="pic"><img src="media/rd_do_thi_dieu_khien.jpg" alt=""></div><div class="tag cut">5</div><div class="star">★ Hợp với em</div>
+        <h3>Kỹ sư điều khiển tự động</h3>
+        <ul><li>Xây dựng thuật toán điều khiển tối ưu</li><li>Lập mô hình, mô phỏng, test thực tế và hiệu chỉnh</li></ul>
+        <div class="meta"><div><span>Ngành học gợi ý</span>Kỹ thuật điều khiển &amp; tự động hóa</div><div><span>Môn nên giỏi</span>Toán, Vật lý, Tin học</div></div></div>
+      <div class="role cut" data-r="ky_thuat_vien" style="--c:var(--tech)"><div class="pic"><img src="media/ky_thuat_vien.jpg" alt=""></div><div class="tag cut">6</div><div class="star">★ Hợp với em</div>
+        <h3>Kỹ thuật viên robot</h3>
+        <ul><li>Điều khiển robot làm các tác vụ được giao</li><li>Lắp đặt, vận hành hệ thống robot</li><li>Bảo trì, bảo dưỡng robot</li></ul>
+        <div class="meta"><div><span>Ngành học gợi ý</span>Cao đẳng, trung cấp Cơ điện tử, Điện công nghiệp</div><div><span>Môn nên giỏi</span>Công nghệ, Vật lý, thực hành</div></div></div>
+    </div>
+    <img class="capi floaty" src="assets/capi_tools_robot_arm.png" alt="" style="right:26px;top:22px;width:150px">
+  </div>
+
+  <!-- 02 TEAM -->
+  <div class="card cut reveal">
+    <div class="sec-head"><div class="num cut">02</div><div><small>Phần 2</small><h2>Một robot ra đời cần cả một đội</h2></div></div>
+    <p class="intro">Ở phòng <b>R&amp;D</b> (Nghiên cứu &amp; Phát triển), các kỹ sư cùng làm 6 việc để biến ý tưởng thành robot thật:</p>
+    <div class="pipeline stagger">
+      <div class="pp" style="--c:var(--tech)"><div class="ic cut"><img src="media/rd_robot_hanh_lang.jpg" alt=""></div><span class="n cut">1</span><h4>Xây dựng giải pháp ứng dụng</h4><p>Robot giải quyết vấn đề gì?</p></div>
+      <div class="pp" style="--c:var(--ctrl)"><div class="ic cut"><img src="media/rd_do_thi_dieu_khien.jpg" alt=""></div><span class="n cut">2</span><h4>Nghiên cứu thuật toán</h4><p>Điều khiển tự động</p></div>
+      <div class="pp" style="--c:var(--soft)"><div class="ic cut"><img src="media/rd_lap_trinh_man_hinh.jpg" alt=""></div><span class="n cut">3</span><h4>Lập trình, phát triển phần mềm</h4><p>Lập trình &amp; phần mềm</p></div>
+      <div class="pp" style="--c:var(--mech)"><div class="ic cut"><img src="media/ky_su_co_khi_cad.jpg" alt=""></div><span class="n cut">4</span><h4>Thiết kế, chế tạo cơ khí</h4><p>Cơ khí</p></div>
+      <div class="pp" style="--c:var(--elec)"><div class="ic cut"><img src="media/robot_mach_dien_tu.png" alt=""></div><span class="n cut">5</span><h4>Thiết kế, chế tạo điện – điện tử</h4><p>Điện tử</p></div>
+      <div class="pp" style="--c:var(--code)"><div class="ic cut"><img src="media/rd_kiem_nghiem_amr.jpg" alt=""></div><span class="n cut">6</span><h4>Quản lý chất lượng, kiểm nghiệm</h4><p>Test &amp; kỹ thuật viên</p></div>
+    </div>
+    <div class="arrowline"></div>
+
+    <h3 style="font-family:Montserrat;font-weight:800;font-size:26px;color:var(--indigo);margin-top:34px">Thành quả: robot do kỹ sư Việt Nam làm ra</h3>
+    <div class="products stagger">
+      <div class="prod cut"><div class="img"><img src="media/apm990_amr_pallet.jpg" alt=""><a class="play" href="https://www.youtube.com/watch?v=Z2LM8vV2_UQ" target="_blank" rel="noopener">▶ Xem video</a></div><h4>AMR Pallet Mover 990</h4><p>Chở hơn 300 chuyến hàng/ngày, hàng trăm tấn tại nhà máy Samsung Thái Nguyên. AI tự nhận dạng, định vị hàng hóa.</p></div>
+      <div class="prod cut"><div class="img"><img src="media/amr_lidar.jpg" alt=""><a class="play" href="https://www.youtube.com/watch?v=jfJZzPRB2nI" target="_blank" rel="noopener">▶ Xem video</a></div><h4>AMR dẫn đường bằng lidar</h4><p>Tự vẽ bản đồ và định vị (SLAM), di chuyển linh hoạt, dễ kết nối với hệ thống khác.</p></div>
+      <div class="prod cut"><div class="img"><img src="media/robot_5g_viettel.jpg" alt=""><a class="play" href="https://www.youtube.com/watch?v=MPqYHMF91fQ" target="_blank" rel="noopener">▶ Xem video</a></div><h4>Robot điều khiển từ xa qua 5G</h4><p>Dùng mạng 5G của Viettel: điều khiển gần như tức thì, “bộ não AI” đặt ở trung tâm, vượt mọi địa hình.</p></div>
+    </div>
+    <p class="intro" style="font-size:19px;margin-top:14px">Còn có: AGV đi theo băng từ, robot hỗ trợ (lễ tân, hướng dẫn), robot khử khuẩn bằng tia UVC…</p>
+  </div>
+
+  <!-- 03 TWO PATHS -->
+  <div class="card cut reveal">
+    <div class="sec-head"><div class="num cut">03</div><div><small>Phần 3</small><h2>Hai hướng phát triển robot ở Việt Nam</h2></div></div>
+    <div class="paths">
+      <div class="path cut"><div class="img"><img src="media/phan_phoi_robot.jpg" alt=""></div>
+        <h3>Phân phối robot nước ngoài</h3><p class="d">Nhập robot của các hãng lớn (hơn 100 hãng AGV/AMR trên thế giới), lắp đặt và bảo trì tại Việt Nam.</p>
+        <div class="pc hidden" data-pc><div class="pro"><h5>ƯU ĐIỂM</h5><ul><li>Sản phẩm có sẵn, đã được kiểm chứng</li><li>Triển khai nhanh</li></ul></div><div class="con"><h5>NHƯỢC ĐIỂM</h5><ul><li>Giá cao, phụ thuộc hãng</li><li>Khó sửa đổi theo nhu cầu riêng</li></ul></div></div>
+        <button class="reveal-btn cut" data-rev>Xem gợi ý</button></div>
+      <div class="path cut"><div class="img"><img src="media/made_in_vietnam.jpg" alt=""></div>
+        <h3>Nghiên cứu, chế tạo “Made in Vietnam”</h3><p class="d">Tự thiết kế, chế tạo robot theo nhu cầu của nhà máy, bệnh viện… ở Việt Nam.</p>
+        <div class="pc hidden" data-pc><div class="pro"><h5>ƯU ĐIỂM</h5><ul><li>Làm đúng theo nhu cầu, giá cạnh tranh</li><li>Làm chủ công nghệ, tạo việc làm cho kỹ sư Việt</li></ul></div><div class="con"><h5>NHƯỢC ĐIỂM</h5><ul><li>Cần đầu tư nghiên cứu lớn, thời gian dài</li><li>Phải cạnh tranh với hãng lớn</li></ul></div></div>
+        <button class="reveal-btn cut" data-rev>Xem gợi ý</button></div>
+    </div>
+    <p class="discuss">💬 Thảo luận: theo em, hướng nào cần <b>nhiều kỹ sư robotics</b> hơn? Vì sao?</p>
+    <img class="capi floaty" src="assets/capi_pondering_glasses.png" alt="" style="right:26px;top:22px;width:140px">
+  </div>
+
+  <!-- 04 ROADMAP -->
+  <div class="card cut reveal">
+    <div class="sec-head"><div class="num cut">04</div><div><small>Phần 4</small><h2>Lộ trình của em</h2></div></div>
+    <div class="road">
+      <div class="stp cut" style="background:var(--elec)"><small>BÂY GIỜ</small><h3>THCS – THPT</h3><ul><li>Học chắc Toán, Vật lý, Tin học, Tiếng Anh</li><li>Tham gia CLB, cuộc thi robotics</li><li>Tự làm dự án nhỏ, học khóa ROBO001</li></ul></div>
+      <div class="rar">→</div>
+      <div class="stp cut" style="background:var(--pb)"><small>SAU THPT</small><h3>Đại học, cao đẳng</h3><ul><li>Cơ khí, Cơ điện tử</li><li>Điện tử, Tự động hóa</li><li>Khoa học máy tính, Robot &amp; AI</li></ul></div>
+      <div class="rar">→</div>
+      <div class="stp cut" style="background:var(--mech)"><small>ĐI LÀM</small><h3>Ngành robotics</h3><ul><li>Kỹ sư cơ khí, điện tử, lập trình, phần mềm, điều khiển</li><li>Kỹ thuật viên robot</li><li>Nghiên cứu R&amp;D, khởi nghiệp</li></ul></div>
+    </div>
+
+    <div class="finder cut">
+      <h4>🔎 Em hợp với vị trí nào?</h4>
+      <p class="s">Chọn những điều em thích, các vị trí phù hợp ở phần 1 sẽ sáng lên.</p>
+      <div class="chips" id="chips">
+        <button class="chip cut" data-m="co_khi ky_thuat_vien">🔧 Lắp ráp, chế tạo đồ vật<i>→ cơ khí, kỹ thuật viên</i></button>
+        <button class="chip cut" data-m="dien_tu">🔌 Mạch điện, linh kiện<i>→ điện tử</i></button>
+        <button class="chip cut" data-m="lap_trinh phan_mem">💻 Viết code<i>→ lập trình, phần mềm</i></button>
+        <button class="chip cut" data-m="dieu_khien co_khi">🧮 Toán, giải đố<i>→ điều khiển, cơ khí</i></button>
+        <button class="chip cut" data-m="phan_mem">🎨 Thiết kế app, giao diện<i>→ phần mềm</i></button>
+        <button class="chip cut" data-m="ky_thuat_vien">🛠️ Vận hành, sửa chữa máy<i>→ kỹ thuật viên</i></button>
+        <button class="chip cut" data-m="dien_tu dieu_khien">⚡ Thí nghiệm Vật lý<i>→ điện tử, điều khiển</i></button>
+        <button class="chip cut" data-m="lap_trinh dieu_khien">🤖 Robot tự động, AI<i>→ lập trình, điều khiển</i></button>
+      </div>
+      <div class="result" id="result"></div>
+    </div>
+    <img class="capi floaty" src="assets/capi_idea_lightbulb.png" alt="" style="right:26px;top:22px;width:140px">
+  </div>
+
+  <footer>
+    <div class="l"><img class="ayor" src="assets/logo_ayor2026_badge_white_outline.png" alt=""><img class="steam" src="assets/logo_steam_for_vietnam_white.png" alt=""></div>
+    <div class="tag cut">#AYOR2026</div>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const isStatic = location.search.includes("static");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (isStatic) document.body.classList.add("static");
+  const revs = document.querySelectorAll(".reveal, .stagger");
+  if (!isStatic && !reduce && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.12 });
+    revs.forEach(el => io.observe(el));
+  } else revs.forEach(el => el.classList.add("in"));
+  if (isStatic) {
+    document.querySelectorAll(".bob, .floaty").forEach(e => e.classList.remove("bob", "floaty"));
+    document.querySelectorAll("[data-pc]").forEach(p => p.classList.remove("hidden"));
+  }
+
+  document.querySelectorAll("[data-rev]").forEach(b => b.addEventListener("click", () => {
+    const pc = b.previousElementSibling; const hid = pc.classList.toggle("hidden");
+    b.textContent = hid ? "Xem gợi ý" : "Ẩn gợi ý";
+  }));
+
+  const names = { co_khi: "Kỹ sư cơ khí", dien_tu: "Kỹ sư điện tử", lap_trinh: "Kỹ sư lập trình robot", phan_mem: "Kỹ sư phần mềm", dieu_khien: "Kỹ sư điều khiển tự động", ky_thuat_vien: "Kỹ thuật viên robot" };
+  const roles = document.getElementById("roles"), result = document.getElementById("result");
+  function update() {
+    const score = {};
+    document.querySelectorAll(".chip.on").forEach(c => c.dataset.m.split(" ").forEach(r => score[r] = (score[r] || 0) + 1));
+    const max = Math.max(0, ...Object.values(score));
+    roles.classList.toggle("filtering", max > 0);
+    roles.querySelectorAll(".role").forEach(r => r.classList.toggle("match", max > 0 && score[r.dataset.r] === max));
+    result.innerHTML = max ? `Gợi ý cho em: <b>${Object.keys(score).filter(k => score[k] === max).map(k => names[k]).join(", ")}</b> <button class="reset" id="rst">Chọn lại</button> · <a href="#roles">xem ở phần 1 ↑</a>` : "";
+    const rst = document.getElementById("rst"); if (rst) rst.onclick = () => { document.querySelectorAll(".chip.on").forEach(c => c.classList.remove("on")); update(); };
+  }
+  document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => { c.classList.toggle("on"); update(); }));
+})();
+</script>
+</body>
+</html>
