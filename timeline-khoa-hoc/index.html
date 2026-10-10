@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timeline khóa Robotics 2026</title>
+<meta name="description" content="Infographic dòng thời gian triển khai khóa Robotics 2026: 5 giai đoạn, 7 bài học, việc của từng team Operations, Education, Marketing">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Montserrat:wght@600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --pb: #A14AAE; --indigo: #351C75; --ink: #2A1650; --muted: #6A6488; --pink: #CB6CE6; --lilac: #F3EAFB;
+    --ops: #1EA8E0; --ops-bg: #DDF1FB; --ops-ink: #0B4A66;
+    --edu: #12A99B; --edu-bg: #D9F3EF; --edu-ink: #0A5B53;
+    --mkt: #F08A24; --mkt-bg: #FDE7D2; --mkt-ink: #7A3D05; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Quicksand", sans-serif; color: var(--ink); min-height: 100vh; position: relative;
+    background: radial-gradient(1200px 700px at 15% 0%, #3A2C8C 0%, transparent 60%), linear-gradient(175deg, #2A2577 0%, #1E2468 45%, #1A1F5C 100%); }
+  body.static { width: 1080px; }
+  .page { max-width: 1080px; margin: 0 auto; padding: 56px 56px 0; position: relative; }
+  .cut { clip-path: polygon(0 0, calc(100% - var(--cut, 12px)) 0, 100% var(--cut, 12px), 100% 100%, var(--cut, 12px) 100%, 0 calc(100% - var(--cut, 12px))); }
+  .stars { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .stars i { position: absolute; border-radius: 50%; background: #fff; opacity: .5; }
+  @keyframes tw { 0%,100% { opacity: .15 } 50% { opacity: .8 } }
+  @keyframes bob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+  @keyframes march { to { stroke-dashoffset: -28; } }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(203,108,230,.7) } 60% { box-shadow: 0 0 0 12px rgba(203,108,230,0) } }
+
+  .logos { display: flex; align-items: center; gap: 22px; position: relative; }
+  .logos .ayor { height: 74px; } .logos .steam { height: 50px; }
+
+  /* HERO */
+  .hero { position: relative; margin-top: 34px; min-height: 330px; }
+  .eyebrow { display: inline-block; font-family: "Audiowide", sans-serif; font-size: 20px; letter-spacing: 3px; color: #fff; background: var(--pb); padding: 8px 20px; --cut: 12px; }
+  h1 { font-family: "Montserrat", sans-serif; font-weight: 900; color: #fff; font-size: 56px; line-height: 1.07; margin-top: 20px; max-width: 660px; letter-spacing: -1px; }
+  h1 span { color: var(--pink); }
+  .lede { color: #DCD6F7; font-size: 23px; font-weight: 600; margin-top: 18px; max-width: 610px; line-height: 1.45; }
+  .hero .capi { position: absolute; right: 0; top: -10px; width: 290px; filter: drop-shadow(0 18px 24px rgba(5,5,30,.5)); }
+
+  /* SECTION TITLES */
+  .sec { display: flex; align-items: center; gap: 14px; margin: 54px 0 20px; }
+  .sec b { font-family: "Audiowide"; font-size: 18px; color: #fff; background: var(--pb); width: 46px; height: 46px; display: grid; place-items: center; --cut: 10px; }
+  .sec h2 { font-family: "Montserrat"; font-weight: 900; color: #fff; font-size: 30px; letter-spacing: -.3px; }
+  .sec small { color: #B9B2E6; font-size: 17px; font-weight: 600; margin-left: auto; }
+
+  /* PANEL */
+  .panel { background: #fff; --cut: 34px; padding: 30px 32px; box-shadow: 0 10px 24px rgba(5,5,30,.35); }
+
+  /* OVERVIEW TRACK */
+  .track { position: relative; height: 350px; margin: 6px 18px 0; }
+  .track .bar { position: absolute; left: 0; right: 0; top: 226px; height: 26px; display: flex; border-radius: 13px; overflow: hidden; }
+  .track .bar div { height: 100%; display: grid; place-items: center; font-family: "Montserrat"; font-weight: 800; font-size: 12px; color: #fff; letter-spacing: .5px; white-space: nowrap; }
+  .track .months { position: absolute; left: 0; right: 0; top: 262px; height: 20px; }
+  .track .months span { position: absolute; font-family: "Montserrat"; font-weight: 800; font-size: 12.5px; color: #9A93BF; letter-spacing: 1px; transform: translateX(-50%); }
+  .track .months span::before { content: ""; position: absolute; left: 50%; top: -12px; width: 2px; height: 8px; background: #D9D3EE; }
+  .ms { position: absolute; transform: translateX(-50%); text-align: center; width: 124px; }
+  .ms.first { transform: translateX(-14px); text-align: left; } .ms.last { transform: translateX(calc(-100% + 14px)); text-align: right; }
+  .ms.up { bottom: 162px; } .ms.dn { top: 290px; } .ms.up.hi { bottom: 214px; }
+  .ms.up.hi::after { height: 72px !important; } .ms.up.hi .pin { top: calc(100% + 72px) !important; }
+  .ms .d { font-family: "Audiowide"; font-size: 15px; color: var(--indigo); }
+  .ms .t { font-size: 13px; font-weight: 700; color: var(--muted); line-height: 1.25; margin-top: 2px; }
+  .ms::after { content: ""; position: absolute; left: 50%; width: 2px; background: #C9BFE6; transform: translateX(-50%); }
+  .ms::after { left: 50%; } .ms.first::after { left: 14px; } .ms.last::after { left: calc(100% - 14px); }
+  .ms.up::after { top: 100%; height: 20px; } .ms.dn::after { bottom: 100%; height: 20px; }
+  .ms .pin { position: absolute; left: 50%; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 4px solid var(--pb); transform: translateX(-50%); z-index: 2; }
+  .ms.first .pin { left: 14px; } .ms.last .pin { left: calc(100% - 14px); }
+  .ms.up .pin { top: calc(100% + 20px); } .ms.dn .pin { bottom: calc(100% + 20px); }
+  .ms.star.dn .pin { bottom: calc(100% + 16px); }
+  .ms.star .d { color: #E8175D; } .ms.star .pin { border-color: #E8175D; width: 20px; height: 20px; }
+  .ms.star .t { color: #E8175D; font-family: "Montserrat"; font-weight: 900; font-size: 15px; }
+  .anim .ms.star .pin { animation: pulse 2s infinite; }
+  .ms.key .d { color: var(--indigo); } .ms.key .t { font-family: "Montserrat"; font-weight: 900; font-size: 14px; color: var(--indigo); }
+  .ms.key .pin { border-color: var(--indigo); width: 18px; height: 18px; }
+  /* 31/10 = mốc quan trọng nhất */
+  .ms.top { width: 210px; bottom: 214px; z-index: 4; }
+  .ms.top .box { background: linear-gradient(150deg, #FF3D7F, #E8175D 60%, #B80F4A); color: #fff; padding: 10px 12px 12px; --cut: 14px; box-shadow: 0 10px 22px rgba(232,23,93,.35); }
+  .ms.top .k { font-family: "Montserrat"; font-weight: 900; font-size: 11px; letter-spacing: 2px; background: #fff; color: #E8175D; display: inline-block; white-space: nowrap; padding: 2px 8px; border-radius: 5px; }
+  .ms.top .d { color: #fff; font-size: 30px; margin-top: 6px; line-height: 1; }
+  .ms.top .t { color: #fff; font-family: "Montserrat"; font-weight: 900; font-size: 16px; letter-spacing: .5px; margin-top: 6px; }
+  .ms.top .s { font-size: 12.5px; font-weight: 700; opacity: .92; margin-top: 3px; }
+  .ms.top::after { height: 66px; width: 4px; background: linear-gradient(#E8175D, rgba(232,23,93,.25)); top: 100%; }
+  .ms.top .pin { top: calc(100% + 64px); width: 26px; height: 26px; border: 6px solid #E8175D; }
+  .anim .ms.top .pin { animation: pulse 1.6s infinite; }
+  .spot { position: absolute; top: 216px; height: 46px; width: 64px; transform: translateX(-50%); border-radius: 14px; background: radial-gradient(closest-side, rgba(232,23,93,.35), transparent); pointer-events: none; }
+  .ms .today { display: inline-block; font-family: "Montserrat"; font-weight: 800; font-size: 11px; color: #fff; background: var(--indigo); padding: 2px 8px; border-radius: 6px; }
+
+  /* LEGEND */
+  .legend { display: flex; flex-wrap: wrap; gap: 12px 26px; margin-top: 20px; padding-top: 18px; border-top: 2px dashed #ECE6F7; align-items: center; }
+  .legend .lb { font-family: "Montserrat"; font-weight: 800; font-size: 13px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+  .tag { display: inline-flex; align-items: center; gap: 6px; font-family: "Montserrat"; font-weight: 800; font-size: 12.5px; padding: 4px 10px 4px 8px; border-radius: 7px; letter-spacing: .2px; white-space: nowrap; }
+  .tag::before { content: ""; width: 9px; height: 9px; border-radius: 3px; background: currentColor; opacity: .85; }
+  .tag.ops { background: var(--ops-bg); color: var(--ops-ink); box-shadow: inset 0 0 0 1.5px var(--ops); }
+  .tag.edu { background: var(--edu-bg); color: var(--edu-ink); box-shadow: inset 0 0 0 1.5px var(--edu); }
+  .tag.mkt { background: var(--mkt-bg); color: var(--mkt-ink); box-shadow: inset 0 0 0 1.5px var(--mkt); }
+  .legend .desc { font-size: 14px; font-weight: 600; color: var(--muted); margin-left: 4px; }
+
+  /* WEEKLY RHYTHM */
+  .rhythm { display: grid; grid-template-columns: 300px 1fr; gap: 28px; align-items: center; }
+  .loop { position: relative; }
+  .loop img { width: 190px; display: block; margin: 0 auto; filter: drop-shadow(0 8px 10px rgba(5,5,30,.2)); }
+  .loop .step { display: flex; gap: 12px; align-items: flex-start; margin-top: 14px; }
+  .loop .step i { flex: none; font-style: normal; font-family: "Audiowide"; font-size: 14px; color: #fff; width: 54px; height: 34px; display: grid; place-items: center; --cut: 8px; }
+  .loop .step p { font-size: 15px; font-weight: 600; color: var(--muted); line-height: 1.4; }
+  .loop .step p b { color: var(--ink); }
+  table.lessons { width: 100%; border-collapse: separate; border-spacing: 0 6px; }
+  .lessons th { font-family: "Montserrat"; font-weight: 800; font-size: 12.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); text-align: center; padding: 0 6px 4px; }
+  .lessons th:first-child { text-align: left; }
+  .lessons td { background: var(--lilac); padding: 9px 10px; text-align: center; font-family: "Audiowide"; font-size: 14.5px; color: var(--indigo); }
+  .lessons td:first-child { text-align: left; font-family: "Quicksand"; font-weight: 700; font-size: 15px; border-radius: 8px 0 0 8px; color: var(--ink); }
+  .lessons td:last-child { border-radius: 0 8px 8px 0; }
+  .lessons td .n { display: inline-grid; place-items: center; width: 28px; height: 28px; font-family: "Audiowide"; font-size: 13px; color: #fff; margin-right: 10px; --cut: 6px; vertical-align: middle; }
+  .lessons td.off { background: #EADCF7; font-weight: 400; }
+  .lessons tr:hover td { background: #E4D3F5; }
+
+  /* PHASE JOURNEY */
+  .journey { position: relative; margin-top: 10px; padding-bottom: 30px; }
+  .links { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+  .links path.line { fill: none; stroke: #8E86D9; stroke-width: 3.5; stroke-dasharray: 3 11; stroke-linecap: round; }
+  .anim .links path.line { animation: march 1.4s linear infinite; }
+  .links path.head { fill: none; stroke: #8E86D9; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+  .card { position: relative; width: 470px; background: #fff; border-radius: 10px; padding: 14px 14px 18px; box-shadow: 0 10px 24px rgba(5,5,30,.35); transition: transform .35s, box-shadow .35s, opacity .7s; }
+  .card.r { margin-left: auto; }
+  .card + .card { margin-top: -120px; }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 18px 34px rgba(5,5,30,.5); }
+  .anim .card { opacity: 0; transform: translateY(40px); }
+  .anim .card.in { opacity: 1; transform: none; }
+  .anim .card.in:hover { transform: translateY(-6px); }
+  .scene { position: relative; height: 170px; border-radius: 8px; overflow: hidden; }
+  .scene > * { position: absolute; }
+  .scene .capi { bottom: -8px; right: 6px; width: 165px; filter: drop-shadow(0 8px 10px rgba(5,5,30,.35)); }
+  .anim .scene .capi { animation: bob 3s ease-in-out infinite; }
+  .scene .when { left: 22px; top: 58px; color: #fff; }
+  .scene .when .ph { font-family: "Montserrat"; font-weight: 800; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: .85; }
+  .scene .when .dt { font-family: "Audiowide"; font-size: 27px; margin-top: 4px; letter-spacing: .5px; }
+  .scene .when .ct { font-size: 15px; font-weight: 700; opacity: .9; margin-top: 4px; }
+  .num { position: absolute; top: 10px; left: 10px; z-index: 3; font-family: "Audiowide"; font-size: 20px; color: #fff; width: 44px; height: 44px; --cut: 10px; display: grid; place-items: center; }
+  .card h3 { font-family: "Montserrat"; font-weight: 900; font-size: 25px; line-height: 1.2; color: #23205A; margin: 16px 6px 0; letter-spacing: -.3px; }
+  .card .goal { font-size: 15.5px; font-weight: 600; color: var(--muted); margin: 6px 6px 0; line-height: 1.45; }
+  ul.tasks { list-style: none; margin: 12px 4px 0; }
+  .tasks li { display: grid; grid-template-columns: 74px 1fr; gap: 10px; align-items: start; padding: 9px 4px; border-top: 1px solid #F0EBF8; }
+  .tasks li:first-child { border-top: 0; }
+  .tasks .d { font-family: "Audiowide"; font-size: 14px; color: var(--indigo); padding-top: 2px; }
+  .tasks .d small { display: block; font-family: "Montserrat"; font-weight: 800; font-size: 11px; color: #A69FC8; letter-spacing: 1px; }
+  .tasks .w { font-size: 15.5px; font-weight: 700; line-height: 1.35; color: var(--ink); }
+  .tasks .w .tg { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  .tasks li.key { background: #FDF0F4; border-radius: 8px; border-top-color: transparent; }
+  .tasks li.key .d { color: #E8175D; }
+  .tasks li.key .w::before { content: "★ "; color: #E8175D; }
+  .tasks li.top { background: linear-gradient(120deg, #E8175D, #FF5C93); }
+  .tasks li.top .d, .tasks li.top .d small, .tasks li.top .w, .tasks li.top .w::before { color: #fff; }
+  .tasks li.top .badge { display: inline-block; margin-left: 6px; white-space: nowrap; font-family: "Montserrat"; font-weight: 900; font-size: 10.5px; letter-spacing: 1.5px; background: #fff; color: #E8175D; padding: 2px 7px; border-radius: 5px; vertical-align: 2px; }
+  .tasks li.tbd .d { color: #B5AED6; font-family: "Montserrat"; font-weight: 800; font-size: 12px; }
+  .tasks li.tbd .w { color: var(--muted); font-weight: 600; }
+  .mini { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+  .mini span { font-size: 13px; font-weight: 700; padding: 3px 9px; border-radius: 6px; background: var(--lilac); color: #5B3A8E; }
+
+  footer { margin-top: 30px; padding: 28px 0 40px; border-top: 2px solid rgba(255,255,255,.15); display: flex; align-items: center; justify-content: space-between; position: relative; gap: 20px; }
+  footer .l { display: flex; align-items: center; gap: 18px; }
+  footer .ayor { height: 60px; } footer .steam { height: 42px; }
+  footer .src { color: #B9B2E6; font-size: 14px; font-weight: 600; text-align: right; line-height: 1.5; }
+  footer .src b { color: #fff; }
+
+  @media (max-width: 900px) {
+    .page { padding: 32px 16px 0; } h1 { font-size: 36px; } .lede { font-size: 18px; }
+    .hero .capi { width: 140px; top: 150px; } .hero { min-height: 430px; }
+    .panel { padding: 22px 16px; --cut: 20px; }
+    .track { overflow-x: auto; } .track-inner { min-width: 760px; position: relative; height: 350px; }
+    .rhythm { grid-template-columns: 1fr; }
+    .lessons td, .lessons th { font-size: 12px; padding: 7px 4px; }
+    .card { width: 100%; } .card + .card { margin-top: 40px; } .links { display: none; }
+    .sec h2 { font-size: 22px; } .sec small { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .anim .card { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="page">
+  <div class="logos"><img class="ayor" src="assets/logo_ayor2026_badge_white_outline.png" alt="AYOR 2026"><img class="steam" src="assets/logo_steam_for_vietnam_white.png" alt="STEAM for Vietnam"></div>
+
+  <section class="hero">
+    <div class="eyebrow cut">ROBOTICS 2026 · DÒNG THỜI GIAN</div>
+    <h1>Từ <span>chuẩn bị</span> đến<br><span>khai giảng</span> và thi đấu</h1>
+    <p class="lede">12 tuần, 5 giai đoạn, 7 bài học. Nhìn một trang là biết tuần này làm gì và team nào phụ trách.</p>
+    <img class="capi" src="assets/capi_presenting_chart.png" alt="">
+  </section>
+
+  <!-- 1. OVERVIEW -->
+  <div class="sec"><b class="cut">01</b><h2>Toàn cảnh 12 tuần</h2><small>17/10/2026 → 10/01/2027</small></div>
+  <div class="panel cut">
+    <div class="track"><div class="track-inner" id="track"></div></div>
+    <div class="legend">
+      <span class="lb">Team phụ trách</span>
+      <span><span class="tag ops">Operations</span><span class="desc">điểm cầu, hậu cần, danh sách</span></span>
+      <span><span class="tag edu">Education</span><span class="desc">bài học, trợ giảng, Office Hour</span></span>
+      <span><span class="tag mkt">Marketing</span><span class="desc">truyền thông, tuyển sinh, cộng đồng</span></span>
+    </div>
+  </div>
+
+  <!-- 2. WEEKLY RHYTHM -->
+  <div class="sec"><b class="cut">02</b><h2>Nhịp học mỗi tuần</h2><small>7 bài · 08/11 → 23/12</small></div>
+  <div class="panel cut rhythm">
+    <div class="loop">
+      <img src="assets/capi_reading_book_backpack.png" alt="">
+      <div class="step"><i class="cut" style="background:var(--pb)">CN</i><p><b>Học offline</b> bài tuần này tại điểm cầu, đồng thời <b>mở bài tiếp theo</b> trên EduOne.</p></div>
+      <div class="step"><i class="cut" style="background:var(--edu)">T4</i><p><b>Office Hour</b> online: ôn lại và giải đáp bài vừa học.</p></div>
+    </div>
+    <table class="lessons">
+      <thead><tr><th>Bài học</th><th>Lên EduOne</th><th>Học offline</th><th>Office Hour</th></tr></thead>
+      <tbody id="lessons"></tbody>
+    </table>
+  </div>
+
+  <!-- 3. PHASES -->
+  <div class="sec"><b class="cut">03</b><h2>5 giai đoạn, ai làm gì</h2><small>★ = mốc quan trọng</small></div>
+  <div class="journey" id="journey"><svg class="links" id="links"></svg></div>
+
+  <footer>
+    <div class="l"><img class="ayor" src="assets/logo_ayor2026_badge_white_outline.png" alt=""><img class="steam" src="assets/logo_steam_for_vietnam_white.png" alt=""></div>
+    <div class="src">Nguồn: <b>Robotics Program Schedule and Delivery Plan</b><br>tab “Dòng thời gian”, cập nhật 10/10/2026</div>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const isStatic = location.search.includes("static");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (isStatic) document.body.classList.add("static");
+  const anim = !isStatic && !reduce;
+  if (anim) document.body.classList.add("anim");
+  const CAPI = "assets/";
+  const TEAM = { O: ["ops", "Operations"], E: ["edu", "Education"], M: ["mkt", "Marketing"] };
+  const tags = s => s.split("").map(k => `<span class="tag ${TEAM[k][0]}">${TEAM[k][1]}</span>`).join("");
+
+  /* ---------- 1. overview track ---------- */
+  const D = s => { const [d, m, y] = s.split("/").map(Number); return new Date(y, m - 1, d); };
+  const T0 = D("17/10/2026"), T1 = D("12/01/2027"), span = T1 - T0;
+  const pct = s => ((D(s) - T0) / span * 100);
+  const phases = [
+    ["17/10/2026", "08/11/2026", "#8244A4", "CHUẨN BỊ & TUYỂN SINH"],
+    ["08/11/2026", "19/11/2026", "#E8175D", "KHAI GIẢNG"],
+    ["19/11/2026", "13/12/2026", "#1EA8E0", "HỌC CHUYÊN SÂU"],
+    ["13/12/2026", "24/12/2026", "#12A99B", "HOÀN THÀNH"],
+    ["24/12/2026", "12/01/2027", "#F08A24", "THI ĐẤU"]];
+  let h = `<div class="bar">` + phases.map(p => `<div style="width:${pct(p[1]) - pct(p[0])}%;background:${p[2]}">${p[3]}</div>`).join("") + `</div>`;
+  h += `<div class="months">` + [["01/11/2026", "THÁNG 11"], ["01/12/2026", "THÁNG 12"], ["01/01/2027", "THÁNG 1"]].map(m => `<span style="left:${pct(m[0])}%">${m[1]}</span>`).join("") + `</div>`;
+  const ms = [
+    ["18/10/2026", "18/10", "Chốt điểm cầu HN, training trợ giảng", "up first"],
+    ["24/10/2026", "24/10", "Thông báo khóa học", "dn"],
+    ["08/11/2026", "08/11", "Khai giảng", "dn key"],
+    ["20/12/2026", "20/12", "Bài 7, buổi cuối", "up"],
+    ["10/01/2027", "10/01", "Giải vô địch Quốc gia NRC", "up last"]];
+  h += `<div class="spot" style="left:${pct("31/10/2026")}%"></div>`;
+  h += `<div class="ms up top" style="left:${pct("31/10/2026")}%"><div class="box cut"><span class="k">★ QUAN TRỌNG NHẤT</span><div class="d">31/10</div><div class="t">MỞ ĐƠN ĐĂNG KÝ</div><div class="s">Thứ Bảy · kèm Office Hour onboarding</div></div><span class="pin"></span></div>`;
+  h += ms.map(m => `<div class="ms ${m[3]}" style="left:${pct(m[0])}%"><div class="d">${m[1]}</div><div class="t">${m[2]}</div><span class="pin"></span></div>`).join("");
+  document.getElementById("track").innerHTML = h;
+
+  /* ---------- 2. lessons ---------- */
+  const L = [["Introduction to Robotics", "01/11", "08/11", "11/11"], ["Robot Programming 1", "08/11", "15/11", "18/11"], ["Electrical System", "15/11", "22/11", "25/11"],
+    ["Kinematics", "22/11", "29/11", "02/12"], ["Dynamics", "29/11", "06/12", "09/12"], ["Robot Programming 2", "06/12", "13/12", "16/12"], ["AI in Robotics", "13/12", "20/12", "23/12"]];
+  const LC = ["#E8175D", "#A14AAE", "#1EA8E0", "#F08A24", "#E07A10", "#8244A4", "#12A99B"];
+  document.getElementById("lessons").innerHTML = L.map((l, i) =>
+    `<tr><td><span class="n cut" style="background:${LC[i]}">${i + 1}</span>${l[0]}</td><td>${l[1]}</td><td class="off">${l[2]}</td><td>${l[3]}</td></tr>`).join("");
+
+  /* ---------- 3. phase cards ---------- */
+  const P = [
+    { c: "#8244A4", g: "linear-gradient(160deg,#4B2C96 0%,#8244A4 60%,#B45CC8 100%)", capi: "capi_megaphone.png", ph: "Giai đoạn 0", dt: "17/10 → 07/11", ct: "3 tuần",
+      h: "Chuẩn bị & tuyển sinh", goal: "Chốt điểm cầu, đào tạo trợ giảng, truyền thông và mở đăng ký trước ngày khai giảng.",
+      t: [["18/10", "CN", "Liên hệ và chốt điểm cầu Hà Nội", "O"], ["18/10", "CN", "Training trợ giảng buổi 1: chuyên môn", "EO"],
+        ["24/10", "T7", "Ra thông báo khóa học, thông tin giảng viên và video quảng bá", "ME", 1], ["25/10", "CN", "Liên hệ và chốt điểm cầu TP.HCM", "O"],
+        ["31/10", "T7", "Mở đơn đăng ký và Office Hour onboarding <span class=\"badge\">QUAN TRỌNG NHẤT</span>", "EM", 2], ["31/10", "T7", "Lập community học viên, gom đội cùng địa phương", "EM"],
+        ["01/11", "CN", "Lên EduOne Bài 1 · gửi danh sách học viên cho điểm cầu", "EO"], ["04/11", "T4", "Training trợ giảng buổi 2: thực hành với robot và học sinh", "EO"],
+        ["Chưa chốt", "", "Liên hệ điểm cầu Đà Nẵng (phụ)", "O", 0, 1]] },
+    { c: "#E8175D", g: "linear-gradient(160deg,#A0144A 0%,#E8175D 55%,#FF7BA3 100%)", capi: "capi_joyful_sparkles.png", ph: "Giai đoạn 1", dt: "08/11 → 18/11", ct: "Bài 1 – 2",
+      h: "Khai giảng", goal: "Sự kiện khai giảng ở các điểm cầu, học sinh bắt đầu nhịp học hằng tuần.",
+      t: [["08/11", "CN", "Sự kiện khai giảng khóa học (offline tại các điểm cầu)", "OEM", 1], ["08/11", "CN", "Học offline Bài 1 · mở Bài 2 trên EduOne", "E"],
+        ["11/11", "T4", "Office Hour: review Bài 1", "E"], ["15/11", "CN", "Học offline Bài 2 · mở Bài 3", "E"], ["18/11", "T4", "Office Hour: review Bài 2", "E"]] },
+    { c: "#1EA8E0", g: "linear-gradient(160deg,#0E4C7A 0%,#1590B8 60%,#5CC4F2 100%)", capi: "capi_laptop_coding.png", ph: "Giai đoạn 2", dt: "22/11 → 16/12", ct: "Bài 3 – 6",
+      h: "Học chuyên sâu", goal: "Điện tử, cơ khí và lập trình nâng cao. Lặp lại nhịp CN học offline, T4 Office Hour.",
+      t: [["22/11", "CN", "Bài 3 · Electrical System", "E"], ["29/11", "CN", "Bài 4 · Kinematics", "E"], ["06/12", "CN", "Bài 5 · Dynamics", "E"],
+        ["13/12", "CN", "Bài 6 · Robot Programming 2", "E"], ["mỗi T4", "", "Office Hour review bài trước (25/11, 02/12, 09/12, 16/12)", "E"]] },
+    { c: "#12A99B", g: "linear-gradient(160deg,#0B4B55 0%,#12A99B 100%)", capi: "capi_excited_sparkle.png", ph: "Giai đoạn 3", dt: "13/12 → 23/12", ct: "Bài 7",
+      h: "Hoàn thành khóa học", goal: "Bài cuối về AI trong Robotics, khép lại chương trình học.",
+      t: [["13/12", "CN", "Lên EduOne Bài 7 · AI in Robotics", "E"], ["20/12", "CN", "Học offline Bài 7 · buổi cuối của khóa", "E", 1], ["23/12", "T4", "Office Hour: review Bài 7", "E"]] },
+    { c: "#F08A24", g: "linear-gradient(160deg,#A8520A 0%,#F08A24 60%,#FFC27A 100%)", capi: "capi_tools_robot_arm.png", ph: "Giai đoạn 4", dt: "23/12 → 10/01", ct: "Sau khóa học",
+      h: "Chuẩn bị thi đấu", goal: "Đưa các đội học viên tới Giải vô địch Quốc gia NRC.",
+      t: [["10/01", "CN", "Chuẩn bị Giải vô địch Quốc gia NRC (bắt đầu từ 23/12)", "O", 1], ["Chưa chốt", "", "Career Talk", "", 0, 1]] }];
+  const J = document.getElementById("journey");
+  J.insertAdjacentHTML("beforeend", P.map((p, i) => `
+    <div class="card${i % 2 ? " r" : ""}">
+      <div class="scene" style="background:${p.g}">
+        <svg viewBox="0 0 442 170" width="100%" height="100%" style="left:0;top:0"><g fill="#fff" opacity=".7"><circle cx="300" cy="24" r="2"/><circle cx="250" cy="70" r="1.5"/><circle cx="340" cy="120" r="1.6"/><circle cx="200" cy="30" r="1.2"/></g>
+          <path d="M0 150 Q 140 128 280 146 T 532 138 V170 H0Z" fill="#000" opacity=".14"/></svg>
+        <div class="when"><div class="ph">${p.ph}</div><div class="dt">${p.dt}</div><div class="ct">${p.ct}</div></div>
+        <img class="capi" src="${CAPI + p.capi}" alt="">
+      </div>
+      <span class="num cut" style="background:${p.c}">${i}</span>
+      <h3>${p.h}</h3><p class="goal">${p.goal}</p>
+      <ul class="tasks">${p.t.map(t => `<li class="${t[4] === 2 ? "key top" : t[4] ? "key" : ""}${t[5] ? " tbd" : ""}"><div class="d">${t[0]}${t[1] ? `<small>${t[1]}</small>` : ""}</div><div class="w">${t[2]}${t[3] ? `<div class="tg">${tags(t[3])}</div>` : ""}</div></li>`).join("")}</ul>
+    </div>`).join(""));
+
+  /* stars */
+  const st = document.getElementById("stars");
+  let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  for (let i = 0; i < 130; i++) {
+    const s = document.createElement("i");
+    s.style.left = rnd() * 100 + "%"; s.style.top = rnd() * 100 + "%";
+    const z = rnd() * 2 + 1; s.style.width = s.style.height = z + "px";
+    if (anim) s.style.animation = `tw ${2 + rnd() * 3}s ease-in-out ${rnd() * 3}s infinite`;
+    st.appendChild(s);
+  }
+
+  /* curved dotted links between cards */
+  const svg = document.getElementById("links");
+  function draw() {
+    const jr = J.getBoundingClientRect(), cards = [...J.querySelectorAll(".card")];
+    svg.setAttribute("viewBox", `0 0 ${jr.width} ${jr.height}`);
+    let out = "";
+    for (let i = 0; i < cards.length - 1; i++) {
+      const a = cards[i], b = cards[i + 1];
+      const ax = a.offsetLeft, ay = a.offsetTop, aw = a.offsetWidth, ah = a.offsetHeight;
+      const bx = b.offsetLeft, by = b.offsetTop, bw = b.offsetWidth;
+      const goRight = bx > ax;
+      const sx = goRight ? ax + aw + 8 : ax - 8, sy = ay + ah * 0.35;
+      const ex = goRight ? bx + bw * 0.62 : bx + bw * 0.38, ey = by - 14;
+      const c1x = sx + (ex - sx) * 0.8;
+      out += `<path class="line" d="M ${sx} ${sy} C ${c1x} ${sy}, ${ex} ${sy + (ey - sy) * 0.3}, ${ex} ${ey}"/>`;
+      out += `<path class="head" d="M ${ex - 9} ${ey - 11} L ${ex} ${ey} L ${ex + 9} ${ey - 11}"/>`;
+    }
+    svg.innerHTML = out;
+  }
+  addEventListener("load", draw); addEventListener("resize", draw); draw();
+
+  const cards = document.querySelectorAll(".card");
+  if (anim && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.15 });
+    cards.forEach(c => io.observe(c));
+  } else cards.forEach(c => c.classList.add("in"));
+})();
+</script>
+</body>
+</html>
